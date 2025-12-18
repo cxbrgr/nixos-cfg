@@ -105,6 +105,9 @@
   security.pam.services.hyprland.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
 
+  # Package Manager https://flatpak.org/
+  services.flatpak.enable = true;
+
   # Enable Hyprland (Selectable at login)
   programs.hyprland.enable = true;
 
@@ -171,6 +174,7 @@
     git
     htop
     fastfetch
+    pkgs.dotfiles
 
     # -- HYPRLAND ESSENTIALS --
     kitty     # The terminal (Hyprland needs this by default)

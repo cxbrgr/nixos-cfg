@@ -7,6 +7,15 @@
   home.username = "chrisleebear";
   home.homeDirectory = "/home/chrisleebear";
 
+# ==========================================
+  # 2. IMPORTS (The "Table of Contents")
+  # ==========================================
+  imports = [
+    #./shell.nix   # Your terminal settings
+    #./theme.nix   # Your look and feel
+    ./apps.nix    # Apps
+  ];
+
   # ==========================================
   # PACKAGES (User Apps & Tools)
   # ==========================================
@@ -24,7 +33,6 @@
     papirus-icon-theme # Icons
     bibata-cursors   # Cursor
     nwg-look         # GUI to verify themes
-    dotfiles
 
     # -- DEVELOPMENT --
     vscode            # Code Editor
