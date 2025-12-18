@@ -174,6 +174,7 @@
     # Development
     vscode
     jetbrains.rider
+    oh-my-posh # terminal styling
     
     # Browsers
     google-chrome
@@ -215,6 +216,14 @@
   # FLAKES & NEW COMMANDS
   # ==========================================
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # ==========================================
+  # FONTS (Crucial for the UI icons)
+  # ==========================================
+  fonts.packages = with pkgs; [
+    font-awesome  # Icons for Waybar
+    nerd-fonts    # Nerdfonts for Terminal
+  ];
 
   # ==========================================
   # EXTRA SERVICES (Tutorial Area)
