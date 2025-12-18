@@ -56,6 +56,24 @@
     };
   };
 
+# ==========================================
+  # SYSTEMD SERVICES
+  # ==========================================
+  # This makes Waybar start automatically and restart if it crashes
+  systemd.user.services.waybar = {
+    Unit = {
+      Description = "Waybar status bar";
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.waybar}/bin/waybar";
+      Restart = "always";
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };  
+
   # ==========================================
   # UI THEMING (GTK & CURSOR)
   # ==========================================
