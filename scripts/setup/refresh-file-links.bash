@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Only needed when setting up a fresh system
+
 # 1. Create the Git Repo Structure
 mkdir -p ~/dotfiles/nixos
 mkdir -p ~/dotfiles/hypr

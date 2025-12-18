@@ -29,6 +29,7 @@
     vscode            # Code Editor
     jetbrains.rider   # IDE
     oh-my-posh        # terminal styling
+    antigravity       # Google AI IDE
 
     # -- BROWSERS --
     google-chrome

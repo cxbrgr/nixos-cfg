@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Flake Update Script
+# This script updates the NixOS system using flakes.
+# It updates the flake inputs, rebuilds the system, and 
+# commits the changes.
+
 # 1. Stop script immediately on error
 set -e
 
@@ -20,7 +25,8 @@ echo "🛠️  Rebuilding NixOS..."
 sudo nixos-rebuild switch --flake .#nixos
 
 # 6. (Optional) Commit the change to Git so you can roll back later
-# echo "💾 Committing changes..."
-# git commit -am "System Update $(date +%Y-%m-%d)"
+echo "💾 Committing changes..."
+git commit -am "System Update $(date +%Y-%m-%d)"
+git push origin main
 
 echo "✅ Upgrade Complete!"

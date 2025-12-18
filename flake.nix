@@ -1,12 +1,8 @@
 {
-  description = "Chris's Pro NixOS Flake";
+  description = "chr-ber's NixOS Flake";
 
-  # 1. SOURCES (Where to get code)
   inputs = {
-    # The main NixOS repository (Unstable = Bleeding Edge for gaming/drivers)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    # Home Manager (Manages your dotfiles like Hyprland/Waybar)
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
