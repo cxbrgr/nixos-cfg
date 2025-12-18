@@ -21,8 +21,8 @@
   # Basic Git Setup (Managed by code now!)
   programs.git = {
     enable = true;
-    userName = "ChrisLeeBear"; # Change to your actual name
-    userEmail = "your-email@example.com"; # Change this
+    userName = "chr-ber"; # Change to your actual name
+    userEmail = "christopher.alexander.berger@gmail.com"; # Change this
   };
 
   # This value determines the Home Manager release that your
@@ -37,4 +37,18 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # ==========================================
+  # CONFIG FILE MANAGEMENT
+  # ==========================================
+
+  # Link Hyprland Config
+  xdg.configFile."hypr/hyprland.conf".source = ../hypr/hyprland.conf;
+  xdg.configFile."hypr/hyprpaper.conf".source = ../hypr/hyprpaper.conf;
+
+  # Link Waybar (The whole folder)
+  xdg.configFile."waybar".source = ../waybar;
+
+  # (Optional) Link Oh My Posh config if you downloaded one
+  # xdg.configFile."oh-my-posh/config.json".source = ../scripts/theme.json;
 }
