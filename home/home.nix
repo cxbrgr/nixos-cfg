@@ -45,7 +45,7 @@
   programs.git = {
     enable = true;
     # We use 'extraConfig' to set standard Git values and avoid naming warnings
-    extraConfig = {
+    settings = {
       user = {
         name = "chr-ber";
         email = "christopher.alexander.berger@gmail.com";
