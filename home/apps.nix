@@ -3,71 +3,105 @@
 {
   home.packages = with pkgs; [
     # ==========================================
-    # USER APPS
+    # Personal Apps
     # ==========================================
-    
-    # -- BROWSERS --
+
+    # -- Browsers --
     google-chrome
 
-    # -- DEVELOPMENT --
+    # -- Development --
     vscode            # Code Editor
     jetbrains.rider   # IDE
-    # antigravity     # (Note: This package likely doesn't exist in Nixpkgs. Commented out to prevent crash)
+    remmina           # Remote Desktop Client
 
-    # -- SOCIAL / MEDIA --
-    spotify
-    discord
-    obsidian
+    # -- Media / Office / Social --
+    spotify           # Music Streaming Service
+    discord           # Voice and Text Chat
+    obsidian          # Knowledge Base and Note Taking
 
-    # -- SYSTEM TOOLS --
-    zip
-    unzip
-    ripgrep          # Better grep
-    remmina          # RDP Client
-    polkit_gnome     # Key/Password Guard 
-    seahorse         # Password Manager GUI
-
+    # -- System Tools --
+    zip               # Compression Utility
+    unzip             # Decompression Utility
+    ripgrep           # Fast Grep Alternative for Searching
+    fzf               # Command Line Fuzzy Finder
+    htop              # Interactive Process Viewer
+    btop              # Modern Resource Monitor
+    polkit_gnome      # Authentication Agent (Pop-ups for sudo)
+    polkit            # Authentication Agent (Pop-ups for sudo)
+    seahorse          # GNOME Keyring Manager (Password GUI)
 
     # ==========================================
-    # ML4W CORE https://mylinuxforwork.github.io/dotfiles/getting-started/overview
+    # ML4W Dotfiles Dependencies
+    # https://mylinuxforwork.github.io/dotfiles/getting-started/overview
+    # https://github.com/mylinuxforwork/dotfiles/blob/1164-nix/setup/nix/flake.nix
     # ==========================================
-    
-    # -- DESKTOP ENVIRONMENT --
-    waybar                 # Status Bar
-    rofi           # App Launcher
-    dunst                  # Notifications
-    swaynotificationcenter # Alternative Notifications
-    libnotify              # Required for sending notifications
-    wlogout                # Logout menu
 
-    # -- THEMING & LOOK --
-    swww                   # Wallpaper Daemon
-    waypaper               # GUI for wallpapers
-    nwg-look               # GTK Theme selector
-    nwg-dock-hyprland      # The dock he uses
-    catppuccin-gtk         # Window/App Theme
-    papirus-icon-theme     # Icons
-    bibata-cursors         # Cursor
+    # -- Desktop Environment --
+    waybar                 # Status Bar for Wayland
+    rofi           # Application Launcher and Menu
+    wlogout                # Wayland Logout Menu
+    swaynotificationcenter # Notification Daemon
+    libnotify              # Library to send notifications
+    hyprpaper              # Wallpaper Utility
+    hyprlock               # Screen Locker
+    hypridle               # Idle Management Daemon
+
+    # -- Theming & Look --
+    nwg-look               # GTK3 Settings Editor for Wayland
+    nwg-dock-hyprland      # GTK-based Dock for Hyprland
+    waypaper               # GUI Wallpaper Setter
+    swww                   # Animated Wallpaper Daemon
+    mpv                    # Video Player (used for video wallpapers)
+    catppuccin-gtk         # GTK Theme
+    papirus-icon-theme     # Icon Theme
+    bibata-cursors         # Cursor Theme
+
+    # -- Terminal & Shell --
+    kitty                  # GPU-accelerated Terminal Emulator
+    alacritty              # Lightweight Terminal Backup
+    fastfetch              # System Information Fetcher
+    eza                    # Modern Replacement for 'ls'
+    zsh                    # Z Shell
+    oh-my-posh             # Prompt Theme Engine
+
+    # -- Utilities --
+    networkmanagerapplet   # Network Manager Tray Icon
+    pavucontrol            # PulseAudio Volume Control GUI
+    blueman                # Bluetooth Manager
+    cliphist               # Clipboard History Manager
+    wl-clipboard           # Wayland Clipboard Utilities
+    brightnessctl          # Screen Brightness Control
+    playerctl              # Command-line Media Player Controller
+
+    # -- Screenshotting --
+    grim                   # Grab Images from Wayland Compositor
+    slurp                  # Select Region for Screenshots
+    swappy                 # Wayland Screenshot Editor
+
+    # -- Script Dependencies --
+    gcc                    # GNU Compiler Collection
+    jq                     # Command-line JSON Processor
+    imagemagick            # Image Manipulation Tool
     
-    # -- TERMINAL & SHELL --
-    kitty
-    alacritty
-    zsh
-    oh-my-posh
-    fastfetch              # System info fetcher
-    btop                   # System monitor
-    
-    # -- UTILITIES --
-    networkmanagerapplet   # WiFi tray
-    pavucontrol            # Audio tray
-    cliphist               # Clipboard history
-    wl-clipboard           # Clipboard tools
-    grim                   # Screenshot
-    slurp                  # Screenshot selection
-    swappy                 # Screenshot editor
-    mpv                    # Video player
-    imagemagick            # Image manipulation
-    python3                # For scripts
-    jq                     # JSON parser
+    # -- Python Environment --
+    # Required for ML4W python scripts
+    (python3.withPackages (ps: with ps; [ 
+      screeninfo 
+      pygobject3 
+      pycairo 
+      requests
+    ]))
+
+    # -- Fonts --
+    font-awesome          # Icon Font
+    fira-code             # Monospace Font with Ligatures
+    fira-code-symbols     # Symbols for Fira Code
+    noto-fonts            # Google Noto Fonts
+    noto-fonts-color-emoji      # Emoji Support
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
   ];
+  
+# Enable Fontconfig to discover the installed fonts
+  fonts.fontconfig.enable = true;
 }
