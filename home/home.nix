@@ -111,6 +111,54 @@
   };
 
   # ==========================================
+  # TERMINAL (Kitty)
+  # ==========================================
+  programs.kitty = {
+    enable = true;
+    themeFile = "Catppuccin-Mocha"; # Built-in via Home Manager!
+    
+    font = {
+      name = "FiraCode Nerd Font";
+      size = 12;
+    };
+    
+    settings = {
+      # Window padding (So text isn't glued to the edge)
+      window_padding_width = 10;
+      
+      # Transparency (Optional - remove if you want solid background)
+      background_opacity = "0.9";
+      
+      # Bell
+      enable_audio_bell = false;
+    };
+  };
+
+  # ==========================================
+  # SHELL (Zsh + Oh My Posh)
+  # ==========================================
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+
+    # Oh My Posh Init
+    initExtra = ''
+      # Start Oh My Posh with our custom theme
+      eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${config.home.homeDirectory}/dotfiles/home/p10k.omp.json)"
+    '';
+    
+    # Aliases (Shortcuts)
+    shellAliases = {
+      ll = "ls -l";
+      update = "sudo nixos-rebuild switch --flake ~/dotfiles#nixos";
+      c = "clear";
+      g = "git";
+    };
+  };
+
+  # ==========================================
   # CONFIG FILE MANAGEMENT (Symlinks)
   # ==========================================
   
