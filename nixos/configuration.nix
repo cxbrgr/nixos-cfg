@@ -100,7 +100,7 @@
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
-  
+
   # Unlock Keyring on Login
   security.pam.services.hyprland.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
@@ -168,17 +168,6 @@
     git
     htop
     fastfetch
-    remmina # RDP
-    polkit_gnome # Key/Password Guard 
-    seahorse # Password Manager GUI
-
-    # Development
-    vscode
-    jetbrains.rider
-    oh-my-posh # terminal styling
-    
-    # Browsers
-    google-chrome
 
     # -- HYPRLAND ESSENTIALS --
     kitty     # The terminal (Hyprland needs this by default)
