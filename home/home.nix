@@ -24,6 +24,7 @@
     papirus-icon-theme # Icons
     bibata-cursors   # Cursor
     nwg-look         # GUI to verify themes
+    dotfiles
 
     # -- DEVELOPMENT --
     vscode            # Code Editor
@@ -145,7 +146,7 @@
     syntaxHighlighting.enable = true;
 
     # Oh My Posh Init
-    initConfig = ''
+    initContent = ''
       eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${config.home.homeDirectory}/dotfiles/home/p10k.omp.json)"
     '';
     
