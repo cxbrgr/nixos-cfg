@@ -208,6 +208,27 @@
   };
 
   # ==========================================
+  # ADGUARD HOME (DNS Blocker)
+  # ==========================================
+  services.adguardhome = {
+    enable = true;
+    
+    # 1. Open the Firewall
+    # This allows devices on the network to send DNS queries to this PC
+    # and allows you to access the Web UI (initially port 3000)
+    openFirewall = true;
+
+    # 2. Mutable Settings (Recommended: true)
+    # true  = You configure Blocklists/Upstreams via the Web UI (Easy)
+    # false = You must configure EVERYTHING in this file (Hard mode)
+    mutableSettings = true;
+    
+    # 3. Initial Port
+    # The setup wizard runs here. After setup, it usually moves to port 80.
+    port = 3000;
+  };
+
+  # ==========================================
   # FLAKES & NEW COMMANDS
   # ==========================================
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
