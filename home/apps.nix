@@ -14,6 +14,7 @@
     vscode            # Code Editor
     jetbrains.rider   # IDE
     remmina           # Remote Desktop Client
+    antigravity       # Agent AGI (Google)
 
     # -- Media / Office / Social --
     spotify           # Music Streaming Service
