@@ -29,6 +29,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            # Automatically back up conflicting files during activation
             home-manager.backupFileExtension = "backup";
             
             home-manager.users.chrisleebear = {

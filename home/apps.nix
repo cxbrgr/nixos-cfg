@@ -94,6 +94,7 @@
     nerd-fonts.jetbrains-mono     # JetBrains Mono font patched with Nerd Font icons
     nerd-fonts.symbols-only       # Font containing only symbols/icons from Nerd Fonts
     material-symbols              # Material Symbols font from Google
+    papirus-icon-theme            # Standard icon theme used by the end-4 config
   ];
 
   # Enable Fontconfig to discover the installed fonts
