@@ -60,7 +60,10 @@ in pkgs.stdenv.mkDerivation {
     
     # Wrap the 'qs' binary
     makeWrapper ${qs}/bin/qs $out/bin/qs \
-      --prefix XDG_DATA_DIRS : ${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}
+      --prefix XDG_DATA_DIRS : ${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name} \
+      --suffix XDG_DATA_DIRS : /var/run/current-system/sw/share \
+      --suffix XDG_DATA_DIRS : /nix/var/nix/profiles/default/share \
+      --suffix XDG_DATA_DIRS : $HOME/.nix-profile/share
       
     chmod +x $out/bin/qs
   '';

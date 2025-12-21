@@ -80,6 +80,7 @@
     socat             # Multipurpose relay (SOcket CAT) used for IPC handling
     fd                # Simple, fast and user-friendly alternative to 'find'
     starship          # Cross-shell prompt utilized in the terminal
+    fish              # Smart and user-friendly command line shell
     
     # -- Terminal Emulators --
     kitty             # GPU-accelerated terminal emulator

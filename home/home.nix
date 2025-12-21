@@ -27,7 +27,6 @@
   # ==========================================
   programs.git = {
     enable = true;
-    # We use 'extraConfig' to set standard Git values and avoid naming warnings
     settings = {
       user = {
         name = "chr-ber";
