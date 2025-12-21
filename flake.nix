@@ -5,6 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    
+    quickshell = {
+      url = "github:quickshell-mirror/quickshell/db1777c20b936a86528c1095cbcb1ebd92801402";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
 # 2. OUTPUTS (What to build)
@@ -30,7 +35,10 @@
             };
 
             # Pass inputs to home-manager
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = { 
+              inherit inputs; 
+              quickshell = inputs.quickshell;
+            };
           }
         ];
       };

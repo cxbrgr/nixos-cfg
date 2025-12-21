@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, quickshell, ... }:
 
 {
   home.packages = with pkgs; [
@@ -7,115 +7,93 @@
     # ==========================================
 
     # -- Browsers & their Friends --
-    google-chrome
-    adguardhome     # Network-wide Ad Blocker
+    google-chrome     # Web browser from Google
+    adguardhome       # Network-wide software for blocking ads and tracking
 
     # -- Development --
-    vscode            # Code Editor
-    jetbrains.rider   # IDE
+    vscode            # Source code editor developed by Microsoft
+    jetbrains.rider   # Cross-Platform .NET IDE
     remmina           # Remote Desktop Client
     antigravity       # Agent AGI (Google)
 
     # -- Media / Office / Social --
-    spotify           # Music Streaming Service
-    discord           # Voice and Text Chat
-    obsidian          # Knowledge Base and Note Taking
+    spotify           # Proprietary music streaming service
+    discord           # All-in-one voice and text chat for gamers
+    obsidian          # Knowledge base that operates on local Markdown files
 
     # -- System Tools --
-    zip               # Compression Utility
-    unzip             # Decompression Utility
-    ripgrep           # Fast Grep Alternative for Searching
-    fzf               # Command Line Fuzzy Finder
-    htop              # Interactive Process Viewer
-    btop              # Modern Resource Monitor
-    polkit_gnome      # Authentication Agent (Pop-ups for sudo)
-    polkit            # Authentication Agent
-    seahorse          # GNOME Keyring Manager (Password GUI)
+    zip               # Compressor/archiver for creating and modifying zipfiles
+    unzip             # Decompressor for zip files
+    ripgrep           # Line-oriented search tool that recursively searches the current directory
+    fzf               # General-purpose command-line fuzzy finder
+    htop              # Interactive process viewer
+    btop              # A monitor of resources
+    polkit_gnome      # PolicyKit authentication agent
+    polkit            # Toolkit for controlling system-wide privileges
+    seahorse          # Application for managing encryption keys and passwords in the GNOME Keyring
 
     # ==========================================
-    # ML4W Dotfiles Dependencies
-    # https://mylinuxforwork.github.io/dotfiles/getting-started/overview
+    # End-4 Dotfiles Dependencies
+    # Dependencies required for the 'dots-hyprland' theme (Quickshell version)
     # ==========================================
 
-    # -- Desktop Environment --
-    waybar                 # Status Bar for Wayland
-    rofi                   # Application Launcher and Menu
-    wlogout                # Wayland Logout Menu
-    swaynotificationcenter # Notification Daemon
-    libnotify              # Library to send notifications
-    hyprpaper              # Wallpaper Utility
-    hyprlock               # Screen Locker
-    hypridle               # Idle Management Daemon
+    # -- Core Components --
+    hyprland          # Dynamic tiling Wayland compositor that manages windows
     
-    # -- File Management (ML4W Standard) --
-    xfce.thunar            # File Manager
-    xfce.thunar-archive-plugin
-    xfce.thunar-volman
-    file-roller            # Archive Manager (GUI for zip/unzip)
-
-    # -- Theming & Look --
-    nwg-look               # GTK3 Settings Editor for Wayland
-    nwg-dock-hyprland      # GTK-based Dock for Hyprland
-    waypaper               # GUI Wallpaper Setter
-    swww                   # Animated Wallpaper Daemon
-    mpv                    # Video Player (used for video wallpapers)
-    catppuccin-gtk         # GTK Theme
-    papirus-icon-theme     # Icon Theme
-    bibata-cursors         # Cursor Theme
-    hyprpolkitagent        # Polkit Agent for Hyprland
-    pywal                  # Pywal (Color palette generator)
+    # Imports the Quickshell wrapper defined in quickshell.nix
+    # Wraps the Quickshell binary with necessary Qt dependencies and environment variables
+    (import ./quickshell.nix { inherit pkgs quickshell; })
     
-    # -- Qt Theming (Qt5 & Qt6) --
-    libsForQt5.qt5ct       # Qt5 Settings
-    kdePackages.qt6ct      # Qt6 Settings (New Standard)
-    libsForQt5.qtstyleplugin-kvantum # SVG-based Theme Engine for Qt
-
-    # -- Terminal & Shell --
-    kitty                  # GPU-accelerated Terminal Emulator
-    alacritty              # Lightweight Terminal Backup
-    fastfetch              # System Information Fetcher
-    eza                    # Modern Replacement for 'ls'
-    zsh                    # Z Shell
-    oh-my-posh             # Prompt Theme Engine
-
-    # -- Utilities --
-    networkmanagerapplet   # Network Manager Tray Icon
-    pavucontrol            # PulseAudio Volume Control GUI
-    blueman                # Bluetooth Manager
-    cliphist               # Clipboard History Manager
-    wl-clipboard           # Wayland Clipboard Utilities
-    brightnessctl          # Screen Brightness Control
-    playerctl              # Command-line Media Player Controller
-    bc                     # Calculator (Required for many ML4W scripts)
-    socat                  # Socket utility (Required for Waybar IPC)
-
-    # -- Screenshotting --
-    grim                   # Grab Images from Wayland Compositor
-    slurp                  # Select Region for Screenshots
-    swappy                 # Wayland Screenshot Editor
-
-    # -- Script Dependencies --
-    gcc                    # GNU Compiler Collection
-    jq                     # Command-line JSON Processor
-    imagemagick            # Image Manipulation Tool
+    # -- Widgets & System Tools --
+    fuzzel            # Application launcher usually started with Super key
+    hypridle          # Idle management daemon to handle sleep and screen locking
+    hyprlock          # Screen locker for Hyprland
+    hyprpicker        # Color picker and screen selection tool
+    hyprsunset        # Blue light filter and color temperature adjuster
+    wlogout           # Logout menu allowing shutdown, reboot, lock, etc.
     
-    # -- Python Environment --
-    # Required for ML4W python scripts
-    (python3.withPackages (ps: with ps; [ 
-      screeninfo 
-      pygobject3 
-      pycairo 
-      requests
-    ]))
+    # -- Theming Engines --
+    matugen           # Material You color generation tool that creates palettes from wallpapers
+    dart-sass         # Sass compiler used to compile style sheets for widgets
+    imagemagick       # Software suite to create, edit, compose, or convert bitmap images
+    swww              # Efficient animated wallpaper daemon for Wayland
+    kdePackages.qt6ct # Qt6 configuration tool to apply themes to Qt applications
+    kdePackages.qtwayland # Qt6 Wayland platform plugin
+    adw-gtk3          # Theme from libadwaita ported to GTK-3 for consistent look
+    
+    # -- System Utilities --
+    wl-clipboard      # Command-line copy/paste utilities for Wayland
+    cliphist          # Clipboard history manager that stores copied items
+    brightnessctl     # Tool to read and control device brightness
+    playerctl         # Command-line utility to control media players
+    pavucontrol       # PulseAudio Volume Control GUI for managing audio devices
+    networkmanagerapplet # Network Manager icon in the system tray
+    libnotify         # Library that sends desktop notifications to a notification daemon
+    
+    # -- Screenshot Utilities --
+    swappy            # Wayland native screenshot editing tool
+    grim              # Screenshot utility for Wayland
+    slurp             # Select a region in a Wayland compositor
+    
+    # -- Command Line Tools --
+    jq                # Lightweight and flexible command-line JSON processor
+    socat             # Multipurpose relay (SOcket CAT) used for IPC handling
+    fd                # Simple, fast and user-friendly alternative to 'find'
+    starship          # Cross-shell prompt utilized in the terminal
+    
+    # -- Terminal Emulators --
+    kitty             # GPU-accelerated terminal emulator
+    foot              # Fast, lightweight and minimalist Wayland terminal emulator
 
     # -- Fonts --
-    font-awesome          # Icon Font
-    fira-code             # Monospace Font with Ligatures
-    fira-code-symbols     # Symbols for Fira Code
-    noto-fonts            # Google Noto Fonts
-    noto-fonts-color-emoji      # Emoji Support
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.symbols-only
+    font-awesome                  # Icon set for web and desktop
+    fira-code                     # Monospaced font with programming ligatures
+    fira-code-symbols             # Symbols for Fira Code
+    noto-fonts                    # Google Noto Fonts
+    noto-fonts-color-emoji        # Emoji Support
+    nerd-fonts.jetbrains-mono     # JetBrains Mono font patched with Nerd Font icons
+    nerd-fonts.symbols-only       # Font containing only symbols/icons from Nerd Fonts
+    material-symbols              # Material Symbols font from Google
   ];
 
   # Enable Fontconfig to discover the installed fonts

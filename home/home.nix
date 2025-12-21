@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, quickshell, ... }:
 
 {
   # ==========================================
@@ -144,36 +144,32 @@
   };
 
 # ==========================================
-  # CONFIG LINKS (The Complete ML4W Suite)
+  # CONFIG LINKS (End-4 Dotfiles Configuration)
+  # Mapping configuration files from ./dotfiles-end4 to ~/.config/
   # ==========================================
   xdg.configFile = {
-    # -- DESKTOP CORE --
-    "hypr".source = ../templates/ml4w-config/hypr;
-    "waybar".source = ../templates/ml4w-config/waybar;
-    "wlogout".source = ../templates/ml4w-config/wlogout;
-    "rofi".source = ../templates/ml4w-config/rofi;
-    "kitty".source = ../templates/ml4w-config/kitty;
+    "Kvantum".source = ./dotfiles-end4/Kvantum;
+    "fish".source = ./dotfiles-end4/fish;
+    "fontconfig".source = ./dotfiles-end4/fontconfig;
+    "foot".source = ./dotfiles-end4/foot;
+    "fuzzel".source = ./dotfiles-end4/fuzzel;
+    "hypr".source = ./dotfiles-end4/hypr;
+    "kde-material-you-colors".source = ./dotfiles-end4/kde-material-you-colors;
+    "kitty".source = ./dotfiles-end4/kitty;
+    "matugen".source = ./dotfiles-end4/matugen;
+    "mpv".source = ./dotfiles-end4/mpv;
+    "quickshell".source = ./dotfiles-end4/quickshell;
+    "wlogout".source = ./dotfiles-end4/wlogout;
+    "xdg-desktop-portal".source = ./dotfiles-end4/xdg-desktop-portal;
+    "zshrc.d".source = ./dotfiles-end4/zshrc.d;
     
-    # -- THE MISSING PIECES (You need these!) --
-    "swaync".source = ../templates/ml4w-config/swaync;               # Notification Center
-    "nwg-dock-hyprland".source = ../templates/ml4w-config/nwg-dock-hyprland; # The Bottom Dock
-    "waypaper".source = ../templates/ml4w-config/waypaper;           # Wallpaper Manager
-    "fastfetch".source = ../templates/ml4w-config/fastfetch;         # System Info Tool
-    
-    # -- ML4W SPECIFICS --
-    "matugen".source = ../templates/ml4w-config/matugen;             # Color generation tool
-    "xsettingsd".source = ../templates/ml4w-config/xsettingsd; # Syncs GTK themes instantly
-    "sidepad".source = ../templates/ml4w-config/sidepad;       # The Sidebar/Dashboard menu
-    "qt6ct".source = ../templates/ml4w-config/qt6ct;           # QT App Theming
-    "walker".source = ../templates/ml4w-config/walker;         # Application Runner (Alternative to Rofi)
-    
-    # -- ASSETS --
-    # Some themes look for assets in these specific folders
-    "ml4w".source = ../templates/ml4w-config/ml4w;
-    "ml4w.theme".source = ../templates/ml4w-config/ml4w;
-
-    # -- OPTIONAL (Enable if you use them) --
-    # "nvim".source = .templates/ml4w-config/nvim;                 # Neovim Config
-    # "ohmyposh".source = .templates/ml4w-config/ohmyposh;         # Shell Prompt (HM handles this usually)
+    "chrome-flags.conf".source = ./dotfiles-end4/chrome-flags.conf;
+    "code-flags.conf".source = ./dotfiles-end4/code-flags.conf;
+    "darklyrc".source = ./dotfiles-end4/darklyrc;
+    "dolphinrc".source = ./dotfiles-end4/dolphinrc;
+    "kdeglobals".source = ./dotfiles-end4/kdeglobals;
+    "konsolerc".source = ./dotfiles-end4/konsolerc;
+    "starship.toml".source = ./dotfiles-end4/starship.toml;
+    "thorium-flags.conf".source = ./dotfiles-end4/thorium-flags.conf;
   };
 }
