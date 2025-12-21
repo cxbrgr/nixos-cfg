@@ -82,6 +82,7 @@
     starship          # Cross-shell prompt utilized in the terminal
     fish              # Smart and user-friendly command line shell
     eza               # A modern replacement for 'ls'
+    python3           # Required for Quickshell scripts (keybinds)
     
     # -- Terminal Emulators --
     kitty             # GPU-accelerated terminal emulator
