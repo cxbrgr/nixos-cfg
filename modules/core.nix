@@ -14,6 +14,18 @@
   programs.home-manager.enable = true;
 
   # ==========================================
+  # ENABLE THE THEME MODULES
+  # ==========================================
+  illogical-impulse = {
+    enable = true;
+    dotfiles = {
+      kitty.enable = true;
+      fish.enable = true;
+      starship.enable = true;
+    };
+  };
+
+  # ==========================================
   # SYSTEMD SERVICES
   # ==========================================
   # This makes Waybar start automatically and restart if it crashes
