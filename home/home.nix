@@ -132,7 +132,7 @@
       g = "git";
       gs = "git status";
       flake-update = "~/dotfiles/scripts/update.sh";
-      flake-rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles#nixos";
+      flake-rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles#nixos && hyprctl reload";
       flake-drybuild = "sudo nixos-rebuild dry-build --flake ~/dotfiles#nixos";
     };
   };
