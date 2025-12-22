@@ -76,6 +76,10 @@ in
         debug {
           disable_logs = false
         }
+        
+        # --- AUTOSTART ---
+        # Start Kitty on Workspace 5 silently
+        exec-once = [workspace 5 silent] kitty
       '';
     };
   
