@@ -5,6 +5,7 @@ let
 
   enabled = config.illogical-impulse.enable;
   hyprlandConf = config.illogical-impulse.hyprland;
+  dotfiles = illogical-impulse-dotfiles;
 in
 {
   config = lib.mkIf enabled {
