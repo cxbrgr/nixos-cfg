@@ -20,6 +20,9 @@
     spotify           # Proprietary music streaming service
     discord           # All-in-one voice and text chat for gamers
     obsidian          # Knowledge base that operates on local Markdown files
+    whatsapp-for-mac  # WhatsApp messaging desktop client
+    telegram-desktop  # Telegram messaging desktop client
+    ferdium           # All in one messaging app (WhatsApp, Telegram, etc.)
 
     # -- System Tools --
     zip               # Compressor/archiver for creating and modifying zipfiles
