@@ -121,9 +121,11 @@
     syntaxHighlighting.enable = true;
 
     # Oh My Posh Init
-    initContent = ''
-      eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${config.home.homeDirectory}/dotfiles/home/p10k.omp.json)"
-    '';
+
+    # TODO: Fix oh-my-posh config loading
+    #initContent = ''
+    #  eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${config.home.homeDirectory}/dotfiles/home/p10k.omp.json)"
+    #'';
     
     # Aliases (Shortcuts)
     shellAliases = {
