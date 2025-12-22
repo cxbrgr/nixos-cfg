@@ -11,10 +11,7 @@
   # IMPORTS (The "Table of Contents")
   # ==========================================
   imports = [
-    # ./shell.nix   # (Uncomment when you populate this file)
-    # ./theme.nix   # (Uncomment when you populate this file)
-    ./apps.nix      # <--- All your packages are now inside here
-    ./modules/default.nix
+    # Main config is now imported via flake.nix -> modules/default.nix
   ];
 
   # ==========================================

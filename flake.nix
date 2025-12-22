@@ -45,7 +45,10 @@
             home-manager.backupFileExtension = "backup";
             
             home-manager.users.chrisleebear = {
-              imports = [ ./home/home.nix ];
+              imports = [ 
+                ./home/home.nix
+                (import ./home/modules/default.nix self inputs.illogical-impulse-dotfiles inputs)
+              ];
             };
 
             # Pass inputs to home-manager
