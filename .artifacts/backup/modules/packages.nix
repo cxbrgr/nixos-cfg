@@ -87,6 +87,7 @@ in
       jq                # Lightweight and flexible command-line JSON processor
       socat             # Multipurpose relay (SOcket CAT) used for IPC handling
       fd                # Simple, fast and user-friendly alternative to 'find'
+      # starship, fish -> handled by options.nix
       eza               # A modern replacement for 'ls'
       python3           # Required for Quickshell scripts (keybinds)
       cava              # Console-based Audio Visualizer for ALSA
@@ -104,6 +105,7 @@ in
       geoclue2          # Geolocation service
       
       # -- Terminal Emulators --
+      # kitty -> handled by options.nix
       foot              # Fast, lightweight and minimalist Wayland terminal emulator
 
       # -- Custom Packages --

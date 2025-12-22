@@ -14,51 +14,52 @@ in
     ];
 
     wayland.windowManager.hyprland = {
-    enable = true;
-    
-    settings = {
-      env = [
-        "NIXOS_OZONE_WL, 1"
-        "GIO_EXTRA_MODULES, ${pkgs.gvfs}/lib/gio/modules"
-      ];
-      
-      # Monitor Configuration (Override here!)
-      # See https://wiki.hypr.land/Configuring/Monitors/
-      monitor=DP-4, 3440x1440@100.00, 0x0, 1
-      monitor=HDMI-A-2, 2560x1440@75.00, 3440x0, 1.066667
+      enable = true;
+      settings = {
+        env = [
+          "NIXOS_OZONE_WL, 1"
+          "GIO_EXTRA_MODULES, ${pkgs.gvfs}/lib/gio/modules"
+        ];
+        
+        # See https://wiki.hypr.land/Configuring/Monitors/
+        monitor = [
+          "DP-4, 3440x1440@100.00, 0x0, 1"
+          "HDMI-A-2, 2560x1440@75.00, 3440x0, 1.066667"
+        ];
 
-      # Workspace Configuration
-      workspace = 1, monitor:DP-4
-      workspace = 2, monitor:DP-4
-      workspace = 3, monitor:DP-4
-      workspace = 4, monitor:DP-4
-      workspace = 5, monitor:DP-4
+        workspace = [
+          "1, monitor:DP-4"
+          "2, monitor:DP-4"
+          "3, monitor:DP-4"
+          "4, monitor:DP-4"
+          "5, monitor:DP-4"
 
-      workspace = 6, monitor:HDMI-A-2
-      workspace = 7, monitor:HDMI-A-2
-      workspace = 8, monitor:HDMI-A-2
-      workspace = 9, monitor:HDMI-A-2
-      workspace = 10, monitor:HDMI-A-2
+          "6, monitor:HDMI-A-2"
+          "7, monitor:HDMI-A-2"
+          "8, monitor:HDMI-A-2"
+          "9, monitor:HDMI-A-2"
+          "10, monitor:HDMI-A-2"
+        ];
+      };
+
+      # Sourcing External Config Files from the Flake Input
+      extraConfig = ''
+        # Source the config from the "dotfiles" input
+        # Note: The path inside the repo is .config/hypr/...
+        source=${dotfiles}/.config/hypr/hyprland/execs.conf
+        source=${dotfiles}/.config/hypr/hyprland/general.conf
+        source=${dotfiles}/.config/hypr/hyprland/rules.conf
+        source=${dotfiles}/.config/hypr/hyprland/colors.conf
+        source=${dotfiles}/.config/hypr/hyprland/keybinds.conf
+        
+        # Custom configs (you can override these locally if you want)
+        source=${dotfiles}/.config/hypr/custom/env.conf
+        source=${dotfiles}/.config/hypr/custom/execs.conf
+        source=${dotfiles}/.config/hypr/custom/general.conf
+        source=${dotfiles}/.config/hypr/custom/rules.conf
+        source=${dotfiles}/.config/hypr/custom/keybinds.conf
+      '';
     };
-
-    # Sourcing External Config Files from the Flake Input
-    extraConfig = ''
-      # Source the config from the "dotfiles" input
-      # Note: The path inside the repo is .config/hypr/...
-      source=${dotfiles}/.config/hypr/hyprland/execs.conf
-      source=${dotfiles}/.config/hypr/hyprland/general.conf
-      source=${dotfiles}/.config/hypr/hyprland/rules.conf
-      source=${dotfiles}/.config/hypr/hyprland/colors.conf
-      source=${dotfiles}/.config/hypr/hyprland/keybinds.conf
-      
-      # Custom configs (you can override these locally if you want)
-      source=${dotfiles}/.config/hypr/custom/env.conf
-      source=${dotfiles}/.config/hypr/custom/execs.conf
-      source=${dotfiles}/.config/hypr/custom/general.conf
-      source=${dotfiles}/.config/hypr/custom/rules.conf
-      source=${dotfiles}/.config/hypr/custom/keybinds.conf
-    '';
-  };
   
     services.hypridle = {
       enable = true;
