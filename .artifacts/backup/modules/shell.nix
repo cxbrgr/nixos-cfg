@@ -38,6 +38,8 @@ in
       flake-update = "~/dotfiles/scripts/flake-update.bash";
       flake-rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles#nixos && hyprctl reload";
       flake-drybuild = "sudo nixos-rebuild dry-build --flake ~/dotfiles#nixos";
+      flake-eval = "nix eval --raw ~/dotfiles#homeConfigurations.chrisleebear.activationPackage";
+      flake-eval-verbose = "nix eval --json .#nixosConfigurations.nixos.config.home-manager.users.chrisleebear.home.packages --apply 'pkgs: map (p: p.pname or p.name) pkgs' | jq -r '.[]' | sort | uniq";
     };
   };
 
