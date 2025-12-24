@@ -53,7 +53,7 @@ in
         source=${dotfiles}/dots/.config/hypr/hyprland/general.conf
         source=${dotfiles}/dots/.config/hypr/hyprland/rules.conf
         source=${dotfiles}/dots/.config/hypr/hyprland/colors.conf
-        source=${dotfiles}/dots/.config/hypr/hyprland/keybinds.conf
+        source=${./../hyprland/keybinds.conf}
         
         # NOTE: Custom configs are removed because we are using Pure Flake Input.
         # Use 'settings' in this file to override instead.
@@ -112,7 +112,7 @@ in
     xdg.configFile."hypr/hyprland/execs.conf".source =      "${illogical-impulse-dotfiles}/dots/.config/hypr/hyprland/execs.conf";
     xdg.configFile."hypr/hyprland/general.conf".source =    "${illogical-impulse-dotfiles}/dots/.config/hypr/hyprland/general.conf";
     xdg.configFile."hypr/hyprland/rules.conf".source =      "${illogical-impulse-dotfiles}/dots/.config/hypr/hyprland/rules.conf";
-    xdg.configFile."hypr/hyprland/keybinds.conf".source =   "${illogical-impulse-dotfiles}/dots/.config/hypr/hyprland/keybinds.conf";
+    xdg.configFile."hypr/hyprland/keybinds.conf".source =   ./../hyprland/keybinds.conf;
 
     xdg.configFile."hypr/hyprlock".source =                 "${illogical-impulse-dotfiles}/dots/.config/hypr/hyprlock";
     xdg.configFile."hypr/shaders".source =                  "${illogical-impulse-dotfiles}/dots/.config/hypr/shaders";

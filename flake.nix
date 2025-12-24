@@ -50,10 +50,10 @@
       nixosConfigurations = {
         # Hostname must match networking.hostName in nixos/configuration.nix
         nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           specialArgs = { inherit inputs self; };
           
           modules = [
+            { nixpkgs.hostPlatform = "x86_64-linux"; }
             ./nixos/configuration.nix
             
             {
