@@ -49,6 +49,7 @@ in
       extraConfig = ''
         # Source the config from the "dotfiles" input
         # Note: The path inside the repo is dots/.config/hypr/...
+        $qsConfig = ii
         source=${dotfiles}/dots/.config/hypr/hyprland/execs.conf
         source=${dotfiles}/dots/.config/hypr/hyprland/general.conf
         source=${dotfiles}/dots/.config/hypr/hyprland/rules.conf
@@ -116,5 +117,15 @@ in
 
     xdg.configFile."hypr/hyprlock".source =                 "${illogical-impulse-dotfiles}/dots/.config/hypr/hyprlock";
     xdg.configFile."hypr/shaders".source =                  "${illogical-impulse-dotfiles}/dots/.config/hypr/shaders";
+
+    # --- Auxiliary Component Configs ---
+    xdg.configFile."foot".source =                          "${illogical-impulse-dotfiles}/dots/.config/foot";
+    xdg.configFile."fuzzel".source =                        "${illogical-impulse-dotfiles}/dots/.config/fuzzel";
+    xdg.configFile."wlogout".source =                       "${illogical-impulse-dotfiles}/dots/.config/wlogout";
+    xdg.configFile."matugen".source =                       "${illogical-impulse-dotfiles}/dots/.config/matugen";
+    xdg.configFile."cava".source =                          "${illogical-impulse-dotfiles}/dots/.config/cava";
+    xdg.configFile."kitty".source =                         "${illogical-impulse-dotfiles}/dots/.config/kitty";
+    xdg.configFile."fish/conf.d/dots-hyprland.fish".source = "${illogical-impulse-dotfiles}/dots/.config/fish/conf.d/dots-hyprland.fish";
+    xdg.configFile."fish/functions".source =                "${illogical-impulse-dotfiles}/dots/.config/fish/functions";
   };
 }
