@@ -1,5 +1,5 @@
 {
-  description = "chr-ber's NixOS Flake";
+  description = "chr-ber's NixOS with Illogical Impulse UI";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
