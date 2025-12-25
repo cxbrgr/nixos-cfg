@@ -9,13 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     systems.url = "github:nix-systems/default-linux";
 
     nur = {
@@ -23,8 +16,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     illogical-impulse-dotfiles = {
-      url = "github:end-4/dots-hyprland";
+      url = "git+https://github.com/end-4/dots-hyprland?submodules=1";
       flake = false;
     };
 
@@ -45,12 +45,12 @@
         }
       );
 
-      homeManagerModules.default = import ./modules self illogical-impulse-dotfiles inputs;
+      homeManagerModules.default = ./modules;
 
       nixosConfigurations = {
         # Hostname must match networking.hostName in nixos/configuration.nix
         nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs self; };
+          specialArgs = { inherit inputs self illogical-impulse-dotfiles; };
           
           modules = [
             { nixpkgs.hostPlatform = "x86_64-linux"; }
@@ -70,7 +70,7 @@
               home-manager.users.chrisleebear = {
                 imports = [ self.homeManagerModules.default ];
               };
-              home-manager.extraSpecialArgs = { inherit inputs self; };
+              home-manager.extraSpecialArgs = { inherit inputs self illogical-impulse-dotfiles; };
             }
           ];
         };

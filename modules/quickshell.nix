@@ -1,42 +1,61 @@
-illogical-impulse-dotfiles: inputs: { config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, illogical-impulse-dotfiles, ... }:
 let
-  cfg = config.illogical-impulse;
-in
-{
-  config = lib.mkIf cfg.enable {
-    gtk = {
-      enable = true;
-      iconTheme = {
-        package = pkgs.adwaita-icon-theme;
-        name = "Adwaita";
-      };
+  quickshell = inputs.quickshell;
+  qs = quickshell.packages.x86_64-linux.default;
+  
+  wrapper = pkgs.stdenv.mkDerivation {
+    name = "illogical-impulse-quickshell-wrapper";
+    meta = with pkgs.lib; {
+      description = "Quickshell bundled Qt deps for home-manager usage";
+      license = licenses.gpl3Only;
     };
-    qt = {
-      enable = true;
-      platformTheme.name = "kde";
-    };
-    home.sessionVariables.ILLOGICAL_IMPULSE_VIRTUAL_ENV = "~/.local/state/quickshell/.venv";
 
-    home.packages = with pkgs; [
-      inputs.quickshell.packages.${pkgs.system}.default
-      kdePackages.kdialog
-      kdePackages.qt5compat
-      kdePackages.qtbase
-      kdePackages.qtdeclarative
-      kdePackages.qtdeclarative
-      kdePackages.qtimageformats
-      kdePackages.qtmultimedia
-      kdePackages.qtpositioning
-      kdePackages.qtquicktimeline
-      kdePackages.qtsensors
-      kdePackages.qtsvg
-      kdePackages.qttools
-      kdePackages.qttranslations
-      kdePackages.qtvirtualkeyboard
-      kdePackages.qtwayland
-      kdePackages.syntax-highlighting
+    dontUnpack = true;
+    dontConfigure = true;
+    dontBuild = true;
+
+    nativeBuildInputs = [
+      pkgs.makeWrapper
+      pkgs.qt6.wrapQtAppsHook
     ];
 
-    xdg.configFile."quickshell".source = "${illogical-impulse-dotfiles}/dots/.config/quickshell";
+    buildInputs = with pkgs; [
+      qs
+      kdePackages.qtwayland
+      kdePackages.qtpositioning
+      kdePackages.qtlocation
+      kdePackages.syntax-highlighting
+      gsettings-desktop-schemas
+      # https://nixos.wiki/wiki/Qt
+      # https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/libraries/qt-6/srcs.nix
+      qt6.qtbase #qt6-base
+      qt6.qtdeclarative #qt6-declarative
+      qt6.qt5compat #qt6-5compat
+      #qt6-avif-image-plugin (TODO: seems not available as nixpkg)
+      qt6.qtimageformats #qt6-imageformats
+      qt6.qtmultimedia #qt6-multimedia
+      qt6.qtpositioning #qt6-positioning
+      qt6.qtquicktimeline #qt6-quicktimeline
+      qt6.qtsensors #qt6-sensors
+      qt6.qtsvg #qt6-svg
+      qt6.qttools #qt6-tools
+      qt6.qttranslations #qt6-translations
+      qt6.qtvirtualkeyboard #qt6-virtualkeyboard
+      qt6.qtwayland #qt6-wayland
+      kdePackages.kirigami #kirigami
+      kdePackages.kdialog #kdialog
+      kdePackages.syntax-highlighting #syntax-highlighting
+    ];
+
+    installPhase = ''
+      mkdir -p $out/bin
+      ls -l ${qs}/bin || true
+      makeWrapper ${qs}/bin/qs $out/bin/qs \
+        --prefix XDG_DATA_DIRS : ${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}
+      chmod +x $out/bin/qs
+    '';
   };
+in {
+  home.packages = [ wrapper ];
+  xdg.configFile."quickshell".source = "${illogical-impulse-dotfiles}/dots/.config/quickshell";
 }

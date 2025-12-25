@@ -464,17 +464,19 @@
     "illogical-impulse-dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1766358979,
-        "narHash": "sha256-LTOf237gQcqH+8QGrSCoJlVHpELkMTr4DwfLmjn6/do=",
-        "owner": "end-4",
-        "repo": "dots-hyprland",
-        "rev": "896aa977011519c661ce365c15b399a89e83e701",
-        "type": "github"
+        "lastModified": 1766482265,
+        "narHash": "sha256-usFCcm1Bej7UAgoMPERmyI7TyNleGkLIsWNMtejIJ3A=",
+        "ref": "refs/heads/main",
+        "rev": "76ca889eecd5ad85a3bbb26c9413d68390067c51",
+        "revCount": 5742,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/end-4/dots-hyprland"
       },
       "original": {
-        "owner": "end-4",
-        "repo": "dots-hyprland",
-        "type": "github"
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/end-4/dots-hyprland"
       }
     },
     "nixpkgs": {
@@ -560,18 +562,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1761821581,
-        "narHash": "sha256-nLuc6jA7z+H/6bHPEBSOYPbz7RtvNCZiTKmYItJuBmM=",
-        "owner": "quickshell-mirror",
-        "repo": "quickshell",
-        "rev": "db1777c20b936a86528c1095cbcb1ebd92801402",
-        "type": "github"
+        "lastModified": 1766386896,
+        "narHash": "sha256-1uql4y229Rh+/2da99OVNe6DfsjObukXkf60TYRCvhI=",
+        "ref": "refs/heads/master",
+        "rev": "3918290c1bcd93ed81291844d9f1ed146672dbfc",
+        "revCount": 714,
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },
       "original": {
-        "owner": "quickshell-mirror",
-        "repo": "quickshell",
-        "rev": "db1777c20b936a86528c1095cbcb1ebd92801402",
-        "type": "github"
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       }
     },
     "root": {

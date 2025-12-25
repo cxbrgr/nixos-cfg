@@ -1,4 +1,4 @@
-illogical-impulse-dotfiles: { config, pkgs, lib, ... }:
+{ config, pkgs, lib, illogical-impulse-dotfiles, ... }:
 with lib;
 let
 in
