@@ -1,5 +1,5 @@
 {
-  description = "chr-ber's NixOS with Illogical Impulse UI";
+  description = "chr-ber's NixOS with Home-manager module for Illogical Impulse Hyprland with QuickShell";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
