@@ -67,7 +67,7 @@ in
         source=${dotfiles}/dots/.config/hypr/hyprland/general.conf
         source=${dotfiles}/dots/.config/hypr/hyprland/rules.conf
         source=${dotfiles}/dots/.config/hypr/hyprland/colors.conf
-        source=${./../hyprland/keybinds.conf}
+        source=${dotfiles}/dots/.config/hypr/hyprland/keybinds.conf
         
         # NOTE: Custom configs are removed because we are using Pure Flake Input.
         # Use 'settings' in this file to override instead.
