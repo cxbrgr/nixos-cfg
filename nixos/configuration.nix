@@ -70,6 +70,8 @@
     variant = "";
   };
 
+  services.geoclue2.enable = true;  # For QtPositioning
+
   # Configure console keymap
   console.keyMap = "de";
 
