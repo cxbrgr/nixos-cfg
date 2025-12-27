@@ -45,12 +45,12 @@ in
           "1, monitor:DP-4"
           "2, monitor:DP-4"
           "3, monitor:DP-4"
-          "4, monitor:DP-4"
-          "5, monitor:DP-4"
+          "7, monitor:DP-4"
+          "8, monitor:DP-4"
 
+          "4, monitor:HDMI-A-2"
+          "5, monitor:HDMI-A-2"
           "6, monitor:HDMI-A-2"
-          "7, monitor:HDMI-A-2"
-          "8, monitor:HDMI-A-2"
           "9, monitor:HDMI-A-2"
           "10, monitor:HDMI-A-2"
         ];
@@ -93,6 +93,8 @@ in
         
         # --- AUTOSTART ---
         exec-once = [workspace 1 silent] kitty
+        exec-once = [workspace 4 silent] spotify
+        exec-once = [workspace 4 silent] ferdium
       '';
     };
   
