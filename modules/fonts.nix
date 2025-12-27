@@ -6,6 +6,9 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
+    # Enable Fontconfig to discover the installed fonts
+    fonts.fontconfig.enable = true;
+
     home.packages = with pkgs; [
       # --- Nerd Fonts ---
       nerd-fonts.caskaydia-cove
