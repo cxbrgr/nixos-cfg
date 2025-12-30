@@ -16,7 +16,7 @@
         flake-drybuild = "nixos-rebuild dry-build --flake ~/dotfiles#nixos";
         flake-eval = "nix eval --raw ~/dotfiles#homeConfigurations.chrisleebear.activationPackage";
         flake-eval-verbose = "nix eval --json ~/dotfiles#nixosConfigurations.nixos.config.home-manager.users.chrisleebear.home.packages --apply 'pkgs: map (p: p.name) pkgs' | jq -r '.[]' | sort | uniq";
-        flake-list-home-pkgs = "nix eval --json .#nixosConfigurations.wrkstn.config.home-manager.users.chrisleebear.home.packages --apply 'pkgs: map (p: p.name) pkgs' | jq -r '.[]' | sort";
+        flake-list-home-pkgs = "nix eval --json .#homeConfigurations.wrkstn.config.home.packages --apply 'pkgs: map (p: p.name) pkgs' | nix run nixpkgs#jq -- -r '.[]' | sort";
         hypr-logout = "hyprctl dispatch exit";
       };
 
