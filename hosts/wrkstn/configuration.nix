@@ -109,13 +109,38 @@
 
   programs.hyprland.enable = true;
 
+  fonts.packages = with pkgs; [
+    # nerd fonts
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.fantasque-sans-mono
+    nerd-fonts.jetbrains-mono     
+    nerd-fonts.mononoki
+    nerd-fonts.space-mono
+    nerd-fonts.symbols-only       
+    nerd-fonts.ubuntu
+    nerd-fonts.ubuntu-mono
+
+    # monospace
+    rubik
+    fira-code                     
+    fira-code-symbols             
+    hanken-grotesk                
+    noto-fonts                    
+
+    # icons
+    font-awesome                  
+    material-symbols              
+    papirus-icon-theme    
+    noto-fonts-color-emoji        
+  ];
+
   # ==========================================
-  # LOCALE & TIME (Vienna)
+  # LOCALE & TIME
   # ==========================================
+  services.geoclue2.enable = true;
   time.timeZone = "Europe/Vienna";
 
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_AT.UTF-8";
     LC_IDENTIFICATION = "de_AT.UTF-8";
@@ -129,13 +154,10 @@
   };
 
   console.keyMap = "de";
-
   services.xserver.xkb = {
     layout = "de";
     variant = "";
   };
-
-  services.geoclue2.enable = true;
 
   #############################################
 

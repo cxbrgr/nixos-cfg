@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
+    inputs.illogical-flake.homeManagerModules.default
     ../../modules/packages-common.nix
     ../../modules/packages-wrkstn.nix
     ../../modules/git.nix
@@ -79,5 +80,15 @@
   };
 
   # Let Home Manager install and manage itself.
+  # Illogical Impulse Configuration
+  programs.illogical-impulse = {
+    enable = true;
+    dotfiles = {
+      fish.enable = true;
+      kitty.enable = true;
+      starship.enable = true;
+    };
+  };
+
   programs.home-manager.enable = true;
 }
