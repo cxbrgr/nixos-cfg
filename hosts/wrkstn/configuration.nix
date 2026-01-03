@@ -63,7 +63,13 @@
   users.users.chrisleebear = {
     isNormalUser = true;
     description = "ChrisLeeBear";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ 
+      "networkmanager"
+      "wheel" 
+      "video" 
+      "input" 
+      "i2c" 
+    ];
   };
 
   home-manager = {
@@ -120,27 +126,11 @@
     vim
     wget
     git
-    pciutils
-    direnv          # augments existing shells with a new feature that can load and unload environment variables
+    direnv
     google-chrome
     vscode
-    antigravity
-    ripgrep
-    remmina
-    zsh
-    psmisc
-    home-manager
+    pciutils
   ];
-
-  fonts.packages = with pkgs; [
-    rubik
-    nerd-fonts.ubuntu
-    nerd-fonts.jetbrains-mono
-];
-
-  # TODO: find option for lagging update
-  #system.autoUpgrade.enabled = true;
-  #system.autoUpgrade.dates = "monthly";
 
   # garbage collect generations
   nix.gc.automatic = true;

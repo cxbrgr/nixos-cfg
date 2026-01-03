@@ -41,7 +41,13 @@
   users.users.chrisleebear = {
     isNormalUser = true;
     description = "ChrisLeeBear";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ 
+      "networkmanager"
+      "wheel" 
+      "video" 
+      "input" 
+      "i2c" 
+    ];
   };
 
   home-manager = {
@@ -85,15 +91,6 @@
 
   #############################################
 
-  programs.gamemode.enable = true;
-  
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; 
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
-
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -101,7 +98,6 @@
     direnv
     google-chrome
     vscode
-    antigravity
     pciutils
   ];
 
