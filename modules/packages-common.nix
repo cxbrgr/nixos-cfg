@@ -32,9 +32,9 @@
       zsh               # Z shell
       direnv            # Directory-based environment variable management
       pciutils          # Utilities for PCI devices
-      fzf               # General-purpose command-line fuzzy finder
       eza               # ls replacement, gives you directory listings with more information, color, and icons
       fd                # Simple, fast and user-friendly alternative to find
       zoxide            # Replacement for cd, for fast directory navigation
+      nil               # Yet another language server for Nix
     ];
 }
