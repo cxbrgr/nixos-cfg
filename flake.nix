@@ -23,10 +23,10 @@
         inputs.home-manager.nixosModules.default
       ];
     };
-    nixosConfigurations.homesrvr = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.hmsrvr = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
-        ./hosts/homesrvr/configuration.nix
+        ./hosts/hmsrvr/configuration.nix
         inputs.home-manager.nixosModules.default
       ];
     };
@@ -36,9 +36,9 @@
       modules = [ ./hosts/wrkstn/home.nix ];
       extraSpecialArgs = {inherit inputs;};
     };
-    homeConfigurations.homesrvr = inputs.home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.hmsrvr = inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      modules = [ ./hosts/homesrvr/home.nix ];
+      modules = [ ./hosts/hmsrvr/home.nix ];
       extraSpecialArgs = {inherit inputs;};
     };
   };

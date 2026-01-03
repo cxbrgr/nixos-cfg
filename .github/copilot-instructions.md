@@ -1,7 +1,7 @@
 # NixOS Configuration - AI Agent Instructions
 
 ## Architecture Overview
-This is a NixOS flake-based system configuration managing multiple hosts (wrkstn, homesrvr) with integrated Home Manager. The structure separates system-level configurations (boot, hardware, services) from user-level (packages, dotfiles, shell).
+This is a NixOS flake-based system configuration managing multiple hosts (wrkstn, hmsrvr) with integrated Home Manager. The structure separates system-level configurations (boot, hardware, services) from user-level (packages, dotfiles, shell).
 
 Key components:
 - `flake.nix`: Defines nixosConfigurations for each host, importing their respective `hosts/*/configuration.nix`

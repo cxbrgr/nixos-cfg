@@ -3,7 +3,7 @@
 {
   imports = [
     ../../modules/packages-common.nix
-    ../../modules/packages-homesrvr.nix
+    ../../modules/packages-hmsrvr.nix
     ../../modules/git.nix
     ../../modules/zsh.nix
   ];

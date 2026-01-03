@@ -35,7 +35,7 @@
     pkgs.xterm
   ];
 
-  networking.hostName = "homesrvr";
+  networking.hostName = "hmsrvr";
   networking.networkmanager.enable = true;
 
   users.users.chrisleebear = {
