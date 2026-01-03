@@ -5,7 +5,10 @@
     [
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
+      ../../modules/docker.nix
     ];
+
+  custom.docker.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
