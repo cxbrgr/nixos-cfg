@@ -66,6 +66,13 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users.chrisleebear = import ./home.nix;
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   programs.hyprland.enable = true;
