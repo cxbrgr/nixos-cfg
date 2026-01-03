@@ -1,12 +1,14 @@
 services:
   comfyui:
-    image: yanwk/comfyui-boot:cu128-megapak
-    container_name: comfyui
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: comfyui-custom
     restart: unless-stopped
     devices:
       - nvidia.com/gpu=all
     ports:
-      - "10011:8188"
+      - "10010:8188"
     volumes:
       # Standard Data Paths
       - /home/chrisleebear/data/docker/comfyui/output:/root/ComfyUI/output
@@ -14,14 +16,10 @@ services:
       - /home/chrisleebear/data/ai/models:/root/ComfyUI/models
       # User Configuration & Workflows
       - /home/chrisleebear/data/docker/comfyui/user:/root/ComfyUI/user
-      # CRITICAL CACHES
-      # Prevents redownloading HF/Torch files on restart
+      # Caches
       - /home/chrisleebear/data/docker/comfyui/cache/huggingface:/root/.cache/huggingface
       - /home/chrisleebear/data/docker/comfyui/cache/torch:/root/.cache/torch
-      # Optional: Persist pip cache for faster custom node installs
       - /home/chrisleebear/data/docker/comfyui/cache/pip:/root/.cache/pip
     environment:
       - TZ=Europe/Vienna
       - CLI_ARGS=
-      # FORCE the container to use its own libraries, preventing the NixOS leak
-      # - LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:/usr/lib:/usr/local/lib
