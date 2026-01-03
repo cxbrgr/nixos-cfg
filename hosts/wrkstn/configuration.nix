@@ -72,25 +72,19 @@
     jack.enable = true;
   };
 
-  # Fix for EPOS GSA 70 "Broken Pipe" / Zombie issues
-  environment.etc."wireplumber/wireplumber.conf.d/51-epos-fix.conf".text = ''
-    monitor.alsa.rules = [
-      {
-        matches = [
-          {
-            "node.name" = "~alsa_output.*Sennheiser_EPOS_GSA_70.*"
-          }
-        ]
-        actions = {
-          update-props = {
-            "session.suspend-timeout-seconds" = 0
-            "api.alsa.period-size" = 1024
-            "api.alsa.headroom" = 8192
-          }
-        }
-      }
-    ]
-  '';
+  services.pipewire.wireplumber.extraConfig."51-disable-suspend"."monitor.alsa.rules" = [
+    {
+      matches = [{
+          "node.name" = "~alsa_output.*Sennheiser_EPOS_GSA_70.*";
+      }];
+      actions.update-props = {
+        "session.suspend-timeout-seconds" = 0;
+        "node.always-process" = true;
+        "dither.method" = "wannamaker3";
+        "dither.noise" = 1;
+      };
+    }
+  ];
 
   users.users.chrisleebear = {
     isNormalUser = true;
@@ -153,6 +147,8 @@
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
+
+  services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
