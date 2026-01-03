@@ -41,21 +41,20 @@
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
-
+  hardware.nvidia-container-toolkit.enable = true;
   hardware.nvidia = {
+    open = false;
+    nvidiaSettings = true;
     modesetting.enable = true;
     powerManagement.enable = true;
     powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  services.xserver.enable = true;
-
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
-
+  
+  services.xserver.enable = true;
   services.xserver.excludePackages = [
     pkgs.xterm
   ];
