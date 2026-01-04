@@ -87,6 +87,13 @@
           sensitivity = 0
       }
     '';
+
+    "hypr/custom/execs.conf".text = ''
+      exec-once = [workspace 1 silent] vivaldi
+      exec-once = [workspace 4 silent] discord
+      exec-once = [workspace 4 silent] kitty btop
+      exec-once = [workspace 5 silent] spotify
+    '';
   };
 
   # Home Manager can also manage your environment variables through
