@@ -37,5 +37,6 @@
       fd                # Simple, fast and user-friendly alternative to find
       zoxide            # Replacement for cd, for fast directory navigation
       gh                # GitHub CLI
+      lnav              # Log file viewer
     ];
 }

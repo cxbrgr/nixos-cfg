@@ -31,11 +31,17 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes"];
+
+  system.stateVersion = "26.05";
 
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableAllFirmware = true;  
 
+# ==========================================
+# graphics
+# ==========================================
   hardware.graphics = {
     enable = true;
   };
@@ -59,11 +65,18 @@
     pkgs.xterm
   ];
 
+# ==========================================
+# network
+# ==========================================
   networking.hostName = "wrkstn";
   networking.networkmanager.enable = true;
 
-  security.rtkit.enable = true;
-  services.pulseaudio.enable = false;
+# ==========================================
+# audio and bluetooth
+# ==========================================
+  security.rtkit.enable = true;          # required for spotify
+
+  services.pulseaudio.enable = false;    # disable default audio server
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -86,6 +99,9 @@
     }
   ];
 
+# ==========================================
+# users
+# ==========================================
   users.users.chrisleebear = {
     isNormalUser = true;
     description = "ChrisLeeBear";
@@ -98,6 +114,9 @@
     ];
   };
 
+# ==========================================
+# home-manager
+# ==========================================
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users.chrisleebear = import ./home.nix;
@@ -105,9 +124,9 @@
     useUserPackages = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
-
-  programs.hyprland.enable = true;
+# ========================================== 
+# fonts
+# ========================================== 
 
   fonts.packages = with pkgs; [
     # nerd fonts
@@ -135,7 +154,7 @@
   ];
 
   # ==========================================
-  # LOCALE & TIME
+  # time & locale
   # ==========================================
   services.geoclue2.enable = true;
   time.timeZone = "Europe/Vienna";
@@ -159,18 +178,33 @@
     variant = "";
   };
 
-  #############################################
+# ==========================================
+# monitoring
+# ==========================================
+services.cockpit = {
+    enable = true;
+    port = 10000;
+    openFirewall = true;
+    settings = {
+      WebService = {
+        AllowUnencrypted = true;
+      };
+    };
+  };
 
-  programs.gamemode.enable = true;
+# ==========================================
+# packages
+# ==========================================
+  programs.hyprland.enable = true; 
+  services.flatpak.enable = true;
   
+  programs.gamemode.enable = true;
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; 
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
-
-  services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
@@ -184,11 +218,11 @@
     qjackctl
   ];
 
-  # garbage collect generations
+# ========================================== 
+# garbage collection
+# ========================================== 
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
   nix.gc.options = "--delete-older-than 14d";
   nix.settings.auto-optimise-store = true;
-
-  system.stateVersion = "25.11"; 
 }
