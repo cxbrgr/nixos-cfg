@@ -1,10 +1,7 @@
 { pkgs, lib, ... }:
-{
-    home.packages = with pkgs; [
-      # ==========================================
-      # Personal Apps - Workstation Specific
-      # ==========================================
 
+{
+  home.packages = with pkgs; [
       # -- Media / Office / Social --
       discord           # All-in-one voice and text chat for gamers
       obsidian          # Knowledge base that operates on local Markdown files
@@ -23,4 +20,20 @@
       vivaldi           # Power-user GUI with built-in vertical tabs, split-screen, and gestures
       qutebrowser       # Keyboard-driven minimalism with Vim-like bindings (QtWebEngine backend)
     ];
+
+  services.flatpak = {
+    enable = true;
+
+    # Optional: clean up unmanaged flatpaks (garbage collection)
+    # uninstallUnmanaged = true; 
+
+    packages = [
+      "io.github.kolunmi.Bazaar"
+    ];
+    
+    remotes = lib.mkOptionDefault [{
+      name = "flathub";
+      location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+    }];
+  };
 }

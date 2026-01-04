@@ -3,6 +3,7 @@
 {
   imports = [
     inputs.illogical-flake.homeManagerModules.default
+    inputs.nix-flatpak.homeManagerModules.nix-flatpak
     ../../modules/packages-common.nix
     ../../modules/packages-wrkstn.nix
     ../../modules/git.nix
@@ -122,7 +123,7 @@
   #  /etc/profiles/per-user/chrisleebear/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    XDG_DATA_DIRS = "$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share";
   };
 
   # Let Home Manager install and manage itself.

@@ -11,6 +11,11 @@
       url = "github:soymou/illogical-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, illogical-flake, ... }@inputs: 
@@ -24,6 +29,7 @@
       modules = [
         ./hosts/wrkstn/configuration.nix
         inputs.home-manager.nixosModules.default
+        inputs.nix-flatpak.nixosModules.nix-flatpak
       ];
     };
 
@@ -32,6 +38,7 @@
       modules = [ 
         ./hosts/wrkstn/home.nix 
         illogical-flake.homeManagerModules.default
+        inputs.nix-flatpak.homeManagerModules.nix-flatpak
         {
           programs.illogical-impulse = {
               enable = true;
