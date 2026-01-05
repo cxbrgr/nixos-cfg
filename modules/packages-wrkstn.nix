@@ -23,12 +23,22 @@
 
   services.flatpak = {
     enable = true;
+    # unmanaged and managed can coexist
+    uninstallUnmanaged = false; 
+    # cleanup unused flatpaks
+    uninstallUnused = false;
 
-    # Optional: clean up unmanaged flatpaks (garbage collection)
-    # uninstallUnmanaged = true; 
+    # do not update on app startup
+    update.onActivation = false;
+    # regularly auto update flatpaks
+    update.auto = {
+      enable = true;
+      onCalendar = "monthly";
+    };
 
     packages = [
       "io.github.kolunmi.Bazaar"
+      "com.github.IsmaelMartinez.teams_for_linux"
     ];
     
     remotes = lib.mkOptionDefault [{
