@@ -16,6 +16,7 @@
       antigravity       # Google AGI agent
       opencode          # Open source AGI agent
       claude-code       # Anthropic AGI agent
+      lazygit           # Git client
       
       # -- System Tools --
       zip               # Compressor/archiver for creating and modifying zipfiles
