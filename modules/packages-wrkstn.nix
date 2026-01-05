@@ -39,6 +39,7 @@
     packages = [
       "io.github.kolunmi.Bazaar"
       "com.github.IsmaelMartinez.teams_for_linux"
+      "org.signal.Signal"
     ];
     
     remotes = lib.mkOptionDefault [{
