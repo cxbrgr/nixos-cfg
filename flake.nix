@@ -29,13 +29,17 @@
   }@inputs: 
   let
     system = "x86_64-linux";
-    usr.Name = "chrisleebear";
-    usr.FullName = "Chris";
+    usr = {
+      name = "chrisleebear";
+      fullName = "Chris";
+    };
     pkgs = nixpkgs.legacyPackages.${system};
   in
   {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+
     nixosConfigurations.wrkstn = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = { inherit inputs usr; };
       modules = [
         ./hosts/wrkstn/configuration.nix
         inputs.home-manager.nixosModules.default
@@ -43,33 +47,12 @@
       ];
     };
 
-    homeConfigurations.wrkstn = inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [ 
-        ./hosts/wrkstn/home.nix 
-        inputs.nix-flatpak.homeManagerModules.nix-flatpak
-        illogical-flake.homeManagerModules.default
-        {
-          programs.illogical-impulse.enable = true;
-        }
-      ];
-      extraSpecialArgs = {inherit inputs;};
-    };
-
     nixosConfigurations.hmsrvr = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = { inherit inputs usr; };
       modules = [
         ./hosts/hmsrvr/configuration.nix
         inputs.home-manager.nixosModules.default
       ];
-    };
-
-    homeConfigurations.hmsrvr = inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [ 
-        ./hosts/hmsrvr/home.nix 
-      ];
-      extraSpecialArgs = {inherit inputs;};
     };
   };
 }

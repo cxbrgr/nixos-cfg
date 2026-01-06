@@ -1,10 +1,9 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, usr, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
       ../../modules/docker.nix
     ];
 
@@ -20,7 +19,24 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    substituters = [
+      "https://cache.nixos.org/"
+      "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    ];
+    trusted-users = [ "root" usr.name ];
+  };
+
+  # Run unpatched binaries (useful for AppImages, VS Code remote, etc.)
+  programs.nix-ld.enable = true;
+  services.envfs.enable = true;
 
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableAllFirmware = true;  
@@ -41,9 +57,9 @@
   networking.hostName = "hmsrvr";
   networking.networkmanager.enable = true;
 
-  users.users.chrisleebear = {
+  users.users.${usr.name} = {
     isNormalUser = true;
-    description = "ChrisLeeBear";
+    description = usr.fullName;
     extraGroups = [ 
       "networkmanager"
       "wheel" 
@@ -54,8 +70,8 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users.chrisleebear = import ./home.nix;
+    extraSpecialArgs = { inherit inputs usr; };
+    users.${usr.name} = import ./home.nix;
     useGlobalPkgs = true;
     useUserPackages = true;
   };
