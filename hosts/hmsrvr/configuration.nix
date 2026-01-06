@@ -74,6 +74,8 @@
     users.${usr.name} = import ./home.nix;
     useGlobalPkgs = true;
     useUserPackages = true;
+    # address clobbering of files, by moving them to a new location in the same director
+    backupFileExtension = "backup";    
   };
 
   nixpkgs.config.allowUnfree = true;
