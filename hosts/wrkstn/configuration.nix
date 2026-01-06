@@ -127,27 +127,11 @@
     allowedUDPPorts = [ 5353 ]; 
   };
 
-  #users = {
-  #  users.spotifyd = {
-  #    isSystemUser = true;
-  #    home = "/home/spotifyd";
-  #    createHome = true;
-  #    description = "spotifyd";
-  #    group = "spotifyd";
-  #    shell = pkgs.bash;
-  #    extraGroups = [ 
-  #      "audio"
-  #      "pipewire" 
-  #    ];
-  #  };
-  #  groups.spotifyd = {};
-  #};
-
-programs.fish.enable = true;
-
 # ==========================================
 # users
 # ==========================================
+  #programs.fish.enable = true;
+
   users.users.chrisleebear = {
     isNormalUser = true;
     description = "ChrisLeeBear";
@@ -156,9 +140,10 @@ programs.fish.enable = true;
       "wheel" 
       "video" 
       "input" 
-      "i2c" 
+      "i2c"
+      "sabnzbd"
     ];
-    shell = pkgs.fish;
+    #shell = pkgs.fish;
   };
 
 # ==========================================
@@ -243,14 +228,6 @@ services.cockpit = {
 # packages
 # ==========================================
   services.flatpak.enable = true;
-
-  programs.gamemode.enable = true;
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; 
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
 
   environment.systemPackages = with pkgs; [
     vim

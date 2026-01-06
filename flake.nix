@@ -7,20 +7,30 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dotfiles-fork = {
+      url = "git+https://github.com/chr-ber/dots-hyprland?submodules=1";
+      flake = false;
+    };
+
     illogical-flake = {
       url = "github:soymou/illogical-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.dotfiles.follows = "dotfiles-fork";
     };
 
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, illogical-flake, ... }@inputs: 
+  outputs = 
+  { 
+    self, nixpkgs, home-manager, illogical-flake, ... 
+  }@inputs: 
   let
     system = "x86_64-linux";
+    usr.Name = "chrisleebear";
+    usr.FullName = "Chris";
     pkgs = nixpkgs.legacyPackages.${system};
   in
   {
@@ -37,18 +47,11 @@
       inherit pkgs;
       modules = [ 
         ./hosts/wrkstn/home.nix 
-        illogical-flake.homeManagerModules.default
         inputs.nix-flatpak.homeManagerModules.nix-flatpak
+        illogical-flake.homeManagerModules.default
         {
-          programs.illogical-impulse = {
-              enable = true;
-              dotfiles = {
-                fish.enable = true;
-                kitty.enable = true;
-                starship.enable = true;
-              };
-            };        
-          }
+          programs.illogical-impulse.enable = true;
+        }
       ];
       extraSpecialArgs = {inherit inputs;};
     };

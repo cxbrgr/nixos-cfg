@@ -19,6 +19,9 @@
       nyxt              # Infinite extensibility via Common Lisp; the "Emacs of browsers"
       vivaldi           # Power-user GUI with built-in vertical tabs, split-screen, and gestures
       qutebrowser       # Keyboard-driven minimalism with Vim-like bindings (QtWebEngine backend)
+
+      # warez
+      qbittorrent
     ];
 
   services.flatpak = {
@@ -37,9 +40,12 @@
     };
 
     packages = [
-      "io.github.kolunmi.Bazaar"
-      "com.github.IsmaelMartinez.teams_for_linux"
-      "org.signal.Signal"
+      "io.github.kolunmi.Bazaar"                    # package manager
+      "com.github.IsmaelMartinez.teams_for_linux"   # wrk chat
+      "org.signal.Signal"                           # instant messanger
+      # run for data access outside of flat container: 
+      # flatpak override --user --filesystem=/home/chrisleebear/data/songs eu.usdx.UltraStarDeluxe
+      "eu.usdx.UltraStarDeluxe"                     # karoake
     ];
     
     remotes = lib.mkOptionDefault [{

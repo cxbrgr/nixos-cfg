@@ -57,6 +57,12 @@
     # '';
   };
 
+  xdg.configFile = {
+    "quickshell/shell.qml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/quickshell/ii/shell.qml";
+    "quickshell/qs".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/quickshell/ii";
+    "illogical-impulse/translations".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/quickshell/ii/translations";
+  };
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
@@ -82,9 +88,9 @@
   programs.illogical-impulse = {
     enable = true;
     dotfiles = {
-      #fish.enable = false;
-      #kitty.enable = false;
-      #starship.enable = false;
+      fish.enable = true;
+      kitty.enable = true;
+      starship.enable = true;
     };
   };
 

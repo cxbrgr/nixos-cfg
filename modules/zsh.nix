@@ -25,6 +25,9 @@
       ll = "eza -l --icons --group-directories-first -a";
       cat = "bat";
       gs = "git status";
+      hc = "hyprctl";
+      ii-c = "xdg-open ~/.config/illogical-impulse/config.json";
+      ii-k = "xdg-open ~/.config/hypr/custom/keybinds.conf ";
       flake-rebuild = "sudo nixos-rebuild switch --flake ~/nixos-cfg#wrkstn";
       flake-drybuild = "nixos-rebuild dry-build --flake ~/nixos-cfg#wrkstn";
       flake-eval = "nix eval --raw ~/nixos-cfg#homeConfigurations.wrkstn.activationPackage";

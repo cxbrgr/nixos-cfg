@@ -1,21 +1,21 @@
 {
   "nodes": {
-    "dotfiles": {
+    "dotfiles-fork": {
       "flake": false,
       "locked": {
-        "lastModified": 1762780848,
-        "narHash": "sha256-+7K/g1N1Mx51ydAGrh6z+sMI05U7Zzh0gGfSlik9K9Q=",
+        "lastModified": 1767693875,
+        "narHash": "sha256-U/tBepxYuLx/GBXtBeRWJMbvOZ32P984MofuD/Y+5Is=",
         "ref": "refs/heads/main",
-        "rev": "f98c42225448d0fc79017e2c2e7a8a9c83b332db",
-        "revCount": 5304,
+        "rev": "c605a9bf882da28967860db667cef7a24dacecdf",
+        "revCount": 5306,
         "submodules": true,
         "type": "git",
-        "url": "https://github.com/end-4/dots-hyprland"
+        "url": "https://github.com/chr-ber/dots-hyprland"
       },
       "original": {
         "submodules": true,
         "type": "git",
-        "url": "https://github.com/end-4/dots-hyprland"
+        "url": "https://github.com/chr-ber/dots-hyprland"
       }
     },
     "flake-parts": {
@@ -62,7 +62,9 @@
     },
     "illogical-flake": {
       "inputs": {
-        "dotfiles": "dotfiles",
+        "dotfiles": [
+          "dotfiles-fork"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -160,6 +162,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles-fork": "dotfiles-fork",
         "home-manager": "home-manager",
         "illogical-flake": "illogical-flake",
         "nix-flatpak": "nix-flatpak",
