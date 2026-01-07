@@ -10,7 +10,7 @@
     };
 
     dotfiles-fork = {
-      url = "git+https://github.com/chr-ber/dots-hyprland?submodules=1";
+      url = "git+file:sources/chr-ber-dots-hyprland";
       flake = false;
     };
 

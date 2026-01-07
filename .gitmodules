@@ -1,5 +1,5 @@
 [submodule "sources/dots-hyprland"]
-	path = sources/dots-hyprland
+	path = sources/chr-ber-dots-hyprland
 	url = https://github.com/chr-ber/dots-hyprland.git
 [submodule "sources/stfl-dotfiles"]
 	path = sources/stfl-dotfiles
