@@ -62,8 +62,6 @@
     "quickshell/shell.qml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/quickshell/ii/shell.qml";
     "quickshell/qs".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/quickshell/ii";
     "illogical-impulse/translations".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/quickshell/ii/translations";
-    # Fix: symlink shapes submodule that illogical-flake doesn't copy
-    "quickshell/ii/modules/common/widgets/shapes".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-cfg/sources/chr-ber-dots-hyprland/dots/.config/quickshell/ii/modules/common/widgets/shapes";
   };
 
   # Home Manager can also manage your environment variables through
