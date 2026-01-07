@@ -3,11 +3,11 @@
     "dotfiles-fork": {
       "flake": false,
       "locked": {
-        "lastModified": 1767817967,
-        "narHash": "sha256-GryaH9t8TyHyd34mX00fWW3b4WYqFbVXiHQm2uEms+s=",
+        "lastModified": 1767821558,
+        "narHash": "sha256-XNAlQcaxgodcCzmNhuSYakJmkZJEliJwN5pKoES8JhY=",
         "ref": "refs/heads/testing-upstream",
-        "rev": "b862f95be5d681f7630f25b6771a34821a80e3b6",
-        "revCount": 5812,
+        "rev": "b3cd21544e60c07f90b5f51da3c246d7fb237d4f",
+        "revCount": 5814,
         "submodules": true,
         "type": "git",
         "url": "file:sources/chr-ber-dots-hyprland"
