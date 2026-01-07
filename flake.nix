@@ -39,7 +39,6 @@
       name = "chrisleebear";
       fullName = "Chris";
     };
-    pkgs = nixpkgs.legacyPackages.${system};
   in
   {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;

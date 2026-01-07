@@ -4,3 +4,6 @@
 [submodule "sources/stfl-dotfiles"]
 	path = sources/stfl-dotfiles
 	url = https://github.com/stfl/dotfiles.git
+[submodule "sources/chr-ber-illogical-flake"]
+	path = sources/chr-ber-illogical-flake
+	url = https://github.com/chr-ber/illogical-flake.git
