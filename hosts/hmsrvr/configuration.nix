@@ -11,6 +11,7 @@
     ../../modules/fonts.nix
     ../../modules/nix-gc.nix
     ../../modules/docker.nix
+    ../../modules/nix-ld.nix
   ];
 
   # --- NIX SETTINGS ---
