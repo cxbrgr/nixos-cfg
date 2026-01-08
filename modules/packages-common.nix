@@ -1,45 +1,42 @@
-{ pkgs, lib, ... }:
+{ 
+  pkgs,
+  lib,
+  ... 
+}:
 {
-    home.packages = with pkgs; [
-      # ==========================================
-      # Personal Apps - Common
-      # ==========================================
+  home.packages = with pkgs; [
+    # ==========================================
+    # CLI Tools - Truly Common (Server + Desktop)
+    # ==========================================
 
-      # -- Browsers & their Friends --
-      google-chrome
-      brave
+    # -- Archives --
+    zip               # Compressor/archiver for creating and modifying zipfiles
+    unzip             # Decompressor for zip files
 
-      # -- Development --
-      vscode            # Source code editor developed by Microsoft
-      jetbrains.rider   # Cross-Platform .NET IDE
-      remmina           # Remote Desktop Client
-      antigravity       # Google AGI agent
-      opencode          # Open source AGI agent
-      claude-code       # Anthropic AGI agent
-      lazygit           # Git client
-      
-      # -- System Tools --
-      zip               # Compressor/archiver for creating and modifying zipfiles
-      unzip             # Decompressor for zip files
-      ripgrep           # Line-oriented search tool that recursively searches the current directory
-      fzf               # General-purpose command-line fuzzy finder
-      htop              # Interactive process viewer
-      btop              # A monitor of resources
-      psmisc            # Utilities for process management (killall, etc.)
-      jq                # Lightweight and flexible command-line JSON processor
-      polkit_gnome      # PolicyKit authentication agent
-      polkit            # Toolkit for controlling system-wide privileges
-      seahorse          # Application for managing encryption keys and passwords in the GNOME Keyring
-      zsh               # Z shell
-      direnv            # Directory-based environment variable management
-      pciutils          # Utilities for PCI devices
-      fzf               # General-purpose command-line fuzzy finder
-      eza               # ls replacement, gives you directory listings with more information, color, and icons
-      fd                # Simple, fast and user-friendly alternative to find
-      gh                # GitHub CLI
-      lnav              # Log file viewer
-      inotify-tools     # Monitor and act upon filesystem events
-      just              # Command-line task runner
-      nh                # Nix CLI helper
-    ];
+    # -- Search & Navigation --
+    ripgrep           # Line-oriented search tool (rg) - faster than grep
+    fzf               # General-purpose command-line fuzzy finder
+    fd                # Simple, fast and user-friendly alternative to find
+    eza               # Modern ls replacement with icons and colors
+
+    # -- Process & System --
+    htop              # Interactive process viewer
+    btop              # Resource monitor with graphs (prettier htop)
+    psmisc            # Utilities for process management (killall, fuser, pstree)
+    pciutils          # Utilities for PCI devices (lspci)
+
+    # -- Development CLI --
+    gh                # GitHub CLI - manage PRs, issues, repos from terminal
+    lazygit           # Simple terminal UI for git commands
+    jq                # Lightweight command-line JSON processor
+    just              # Command-line task runner (like make but simpler)
+    direnv            # Directory-based environment variable management
+
+    # -- Nix --
+    nh                # Nix CLI helper - prettier nixos-rebuild
+
+    # -- Logs & Files --
+    lnav              # Advanced log file navigator with syntax highlighting
+    inotify-tools     # Monitor and act upon filesystem events (inotifywait)
+  ];
 }

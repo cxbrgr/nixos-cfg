@@ -1,5 +1,11 @@
-{ config, pkgs, lib, inputs, usr, ... }:
-
+{ 
+  config,
+  pkgs, 
+  lib,
+  inputs,
+  usr,
+  ... 
+}:
 {
   imports =
     [
@@ -125,13 +131,9 @@
     }
   ];
 
-
-
 # ==========================================
 # users
 # ==========================================
-  #programs.fish.enable = true;
-
   users.users.${usr.name} = {
     isNormalUser = true;
     description = usr.fullName;
@@ -142,7 +144,6 @@
       "input" 
       "i2c"
     ];
-    #shell = pkgs.fish;
   };
 
 # ==========================================
@@ -233,5 +234,4 @@ services.cockpit = {
     pwvucontrol
     qjackctl
   ];
-
 }

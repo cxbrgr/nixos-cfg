@@ -1,28 +1,49 @@
-{ pkgs, lib, ... }:
-
+{ 
+  pkgs,
+  lib,
+  ... 
+}:
 {
   home.packages = with pkgs; [
-      # -- Media / Office / Social --
-      discord           # All-in-one voice and text chat for gamers
-      obsidian          # Knowledge base that operates on local Markdown files
+    # ==========================================
+    # Desktop Apps - Workstation Only
+    # ==========================================
 
-      # -- Audio --
-      spotify           # Proprietary music streaming service
-      alsa-scarlett-gui # GUI for Scarlett 2i2i
-      playerctl         # Command line tool for controlling media players
-      bitwig-studio     # The DAW
-      reaper            # Good to have as backup/mastering
-      qpwgraph          # Visual patchbay (essential for routing PipeWire)
+    # -- Browsers --
+    google-chrome     # Google's proprietary browser
+    brave             # Privacy-focused Chromium fork with built-in ad blocking
+    nyxt              # Infinitely extensible browser via Common Lisp (Emacs of browsers)
+    vivaldi           # Power-user browser with vertical tabs, split-screen, gestures
+    qutebrowser       # Keyboard-driven browser with Vim-like bindings
 
-      # Browsers
-      # no nix pacakge available - thorium          # Chromium fork compiled with AVX optimizations for maximum speed
-      nyxt              # Infinite extensibility via Common Lisp; the "Emacs of browsers"
-      vivaldi           # Power-user GUI with built-in vertical tabs, split-screen, and gestures
-      qutebrowser       # Keyboard-driven minimalism with Vim-like bindings (QtWebEngine backend)
+    # -- Development (GUI) --
+    vscode            # Source code editor by Microsoft
+    jetbrains.rider   # Cross-platform .NET IDE
+    remmina           # Remote desktop client (RDP, VNC, SSH)
+    antigravity       # Google AGI coding agent
+    opencode          # Open source AGI coding agent
+    claude-code       # Anthropic AGI coding agent
 
-      # warez
-      qbittorrent
-    ];
+    # -- Media / Office / Social --
+    discord           # Voice and text chat for communities
+    obsidian          # Knowledge base on local Markdown files
+
+    # -- Audio --
+    spotify           # Music streaming service
+    alsa-scarlett-gui # GUI for Focusrite Scarlett audio interfaces
+    playerctl         # Command-line tool for controlling media players
+    bitwig-studio     # Digital audio workstation (DAW)
+    reaper            # Lightweight DAW, good for mastering
+    qpwgraph          # Visual patchbay for PipeWire audio routing
+
+    # -- Desktop Utilities --
+    polkit_gnome      # PolicyKit authentication agent (GUI password prompts)
+    polkit            # Toolkit for controlling system-wide privileges
+    seahorse          # GNOME keyring manager for encryption keys and passwords
+
+    # -- Torrents --
+    qbittorrent       # Open-source BitTorrent client
+  ];
 
   services.flatpak = {
     enable = true;
