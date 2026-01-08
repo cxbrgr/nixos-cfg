@@ -82,7 +82,7 @@ services:
     volumes:
       - /data/docker/qbittorrent:/config
       - /data:/data
-    ports:
+    ports: 
       - 10106:8080
       - 6881:6881
       - 6881:6881/udp

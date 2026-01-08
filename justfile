@@ -40,4 +40,4 @@ media-init:
     sudo bash docker/media-srvr/init-media-dirs.sh
 
 media-configure:
-    python3 docker/media-srvr/configure-media-stack.py
+    nix-shell -p python3 python3Packages.requests --run "python3 docker/media-srvr/configure-media-stack.py"
