@@ -105,3 +105,22 @@ services:
     devices:
       - /dev/dri:/dev/dri # Passes the i5-12400 iGPU for transcoding
     restart: unless-stopped
+
+  # --- THE GATEWAY ---
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - prowlarr
+      - sonarr
+      - radarr
+      - bazarr
+      - overseerr
+      - qbittorrent
+    restart: unless-stopped

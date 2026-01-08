@@ -28,16 +28,26 @@ update:
 
 # Media Stack Management
 media-up:
-    docker compose -f docker/media-srvr/docker-compose.yaml up -d
+    docker compose -f docker/media-srvr/docker-compose.yml up -d
 
 media-down:
-    docker compose -f docker/media-srvr/docker-compose.yaml down
+    docker compose -f docker/media-srvr/docker-compose.yml down
 
 media-logs:
-    docker compose -f docker/media-srvr/docker-compose.yaml logs -f
+    docker compose -f docker/media-srvr/docker-compose.yml logs -f
 
 media-init:
     sudo bash docker/media-srvr/init-media-dirs.sh
 
 media-configure:
     nix-shell -p python3 python3Packages.requests --run "python3 docker/media-srvr/configure-media-stack.py"
+
+# AdGuard Home Management
+adguard-up:
+    docker compose -f docker/adguard-home/docker-compose.yml up -d
+
+adguard-down:
+    docker compose -f docker/adguard-home/docker-compose.yml down
+
+adguard-logs:
+    docker compose -f docker/adguard-home/docker-compose.yml logs -f
