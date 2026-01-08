@@ -19,8 +19,9 @@
     fd                # Simple, fast and user-friendly alternative to find
     eza               # Modern ls replacement with icons and colors
 
-    # -- File Viewing --
+    # -- Files & Network --
     bat               # Cat clone with syntax highlighting and git integration
+    wget              # Download files from the web
     
     # -- Process & System --
     htop              # Interactive process viewer
