@@ -12,6 +12,11 @@ switch-ii:
     (qs -c $qsConfig >/dev/null 2>&1 &)
     hyprctl reload && hyprctl reload
 
+reload-ii:
+    qs -c $qsConfig kill 2>/dev/null || true
+    (qs -c $qsConfig >/dev/null 2>&1 &)
+    hyprctl reload && hyprctl reload    
+
 switch-dry:
     nh os switch --dry .    
 

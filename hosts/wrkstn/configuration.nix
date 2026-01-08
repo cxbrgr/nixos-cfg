@@ -15,6 +15,7 @@
       ../../modules/docker.nix
       ../../modules/steam.nix
       ../../modules/spotifyd/system.nix
+      ../../modules/sshfs-mounts.nix
       ../../modules/home-manager.nix
     ];
 
