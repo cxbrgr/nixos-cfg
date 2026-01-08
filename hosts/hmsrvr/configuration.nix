@@ -62,7 +62,8 @@
   networking = {
     hostName = "hmsrvr";
     search = [ "lan" ];
-
+    domain = "lan";
+    
     nameservers = [ 
       "192.168.0.199" 
       "1.1.1.1"

@@ -114,6 +114,7 @@
   networking = {
     hostName = "wrkstn";
     search = [ "lan" ];
+    domain = "lan";
 
     nameservers = [ 
       "192.168.0.199" 
