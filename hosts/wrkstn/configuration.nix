@@ -10,8 +10,9 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../modules/docker.nix
+      ../../modules/fonts.nix
       ../../modules/nix-gc.nix
+      ../../modules/docker.nix
       ../../modules/steam.nix
       ../../modules/spotifyd/system.nix
       ../../modules/home-manager.nix
@@ -66,9 +67,9 @@
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableAllFirmware = true;  
 
-# ==========================================
-# graphics
-# ==========================================
+  # ==========================================
+  # graphics
+  # ==========================================
   hardware.graphics = {
     enable = true;
   };
@@ -97,15 +98,15 @@
     pkgs.xterm
   ];
 
-# ==========================================
-# network
-# ==========================================
+  # ==========================================
+  # network
+  # ==========================================
   networking.hostName = "wrkstn";
   networking.networkmanager.enable = true;
 
-# ==========================================
-# audio and bluetooth
-# ==========================================
+  # ==========================================
+  # audio and bluetooth
+  # ==========================================
   security.rtkit.enable = true;          # required for spotify
 
   services.pulseaudio.enable = false;    # disable default audio server
@@ -131,9 +132,9 @@
     }
   ];
 
-# ==========================================
-# users
-# ==========================================
+  # ==========================================
+  # users
+  # ==========================================
   users.users.${usr.name} = {
     isNormalUser = true;
     description = usr.fullName;
@@ -146,39 +147,10 @@
     ];
   };
 
-# ==========================================
-# home-manager
-# ==========================================
-  home-manager.users.${usr.name}.imports = [ ./home.nix ];
-
-# ========================================== 
-# fonts
-# ========================================== 
-
-  fonts.packages = with pkgs; [
-    # nerd fonts
-    nerd-fonts.caskaydia-cove
-    nerd-fonts.fantasque-sans-mono
-    nerd-fonts.jetbrains-mono     
-    nerd-fonts.mononoki
-    nerd-fonts.space-mono
-    nerd-fonts.symbols-only       
-    nerd-fonts.ubuntu
-    nerd-fonts.ubuntu-mono
-
-    # monospace
-    rubik
-    fira-code                     
-    fira-code-symbols             
-    hanken-grotesk                
-    noto-fonts                    
-
-    # icons
-    font-awesome                  
-    material-symbols              
-    papirus-icon-theme    
-    noto-fonts-color-emoji        
-  ];
+  # ==========================================
+  # home-manager
+  # ==========================================
+    home-manager.users.${usr.name}.imports = [ ./home.nix ];
 
   # ==========================================
   # time & locale
@@ -205,10 +177,10 @@
     variant = "";
   };
 
-# ==========================================
-# monitoring
-# ==========================================
-services.cockpit = {
+  # ==========================================
+  # monitoring
+  # ==========================================
+  services.cockpit = {
     enable = true;
     port = 10000;
     openFirewall = true;
@@ -219,9 +191,9 @@ services.cockpit = {
     };
   };
 
-# ==========================================
-# packages
-# ==========================================
+  # ==========================================
+  # packages
+  # ==========================================
   services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [

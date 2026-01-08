@@ -8,8 +8,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/docker.nix
+    ../../modules/fonts.nix
     ../../modules/nix-gc.nix
+    ../../modules/docker.nix
   ];
 
   # --- NIX SETTINGS ---
