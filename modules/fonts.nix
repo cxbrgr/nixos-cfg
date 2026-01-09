@@ -4,6 +4,9 @@
   ... 
 }:
 {
+  # fonts available at /run/current-system/sw/share/X11/fonts
+  fonts.fontDir.enable = true;
+
   fonts.packages = with pkgs; [
     # --- Nerd Fonts ---
     nerd-fonts.caskaydia-cove
