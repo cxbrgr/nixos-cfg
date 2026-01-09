@@ -1,5 +1,21 @@
 services:
-  # --- notification manager ---
+
+  # Usenet download client
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=100
+      - TZ=Europe/Vienna
+    volumes:
+      - /data/docker/sabnzbd:/config
+      - /data:/data
+    ports:
+      - 10106:8080
+    restart: unless-stopped
+
+  # index manager (usenet & torrents)
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
@@ -13,7 +29,7 @@ services:
       - 10101:9696
     restart: unless-stopped
 
-  # --- movie manager ---
+  # movie manager
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
@@ -58,7 +74,7 @@ services:
       - 10104:6767
     restart: unless-stopped
 
-  # manage movies & series -> plex stack
+  # jelly stack - manage movies & series & co
   overseerr:
     image: sctx/overseerr:latest
     container_name: overseerr
@@ -72,7 +88,24 @@ services:
       - 10105:5055
     restart: unless-stopped
 
-  # manage movies & series -> jelly stack
+  # plex stack - player
+  plex: 
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=100
+      - TZ=Europe/Vienna
+      - VERSION=docker
+    volumes:
+      - /data/docker/plex:/config
+      - /data/media:/data/media
+    devices:
+      - /dev/dri:/dev/dri # Passes the i5-12400 iGPU for transcoding
+    restart: unless-stopped
+
+  # jelly stack - manage movies & series & co
   jellyseerr:
     image: ghcr.io/fallenbagel/jellyseerr:latest
     init: true
@@ -93,39 +126,7 @@ services:
       retries: 3
     restart: unless-stopped    
 
-  # Usenet download client
-  sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:latest
-    container_name: sabnzbd
-    environment:
-      - PUID=1000
-      - PGID=100
-      - TZ=Europe/Vienna
-    volumes:
-      - /data/docker/sabnzbd:/config
-      - /data:/data
-    ports:
-      - 10106:8080
-    restart: unless-stopped
-
-  # --- PLAYER --- plex stack
-  plex: 
-    image: lscr.io/linuxserver/plex:latest
-    container_name: plex
-    network_mode: host
-    environment:
-      - PUID=1000
-      - PGID=100
-      - TZ=Europe/Vienna
-      - VERSION=docker
-    volumes:
-      - /data/docker/plex:/config
-      - /data/media:/data/media
-    devices:
-      - /dev/dri:/dev/dri # Passes the i5-12400 iGPU for transcoding
-    restart: unless-stopped
-
-  # --- PLAYER --- jelly stack
+  # jelly stack - player
   jellyfin:
     image: jellyfin/jellyfin
     container_name: jellyfin
@@ -151,7 +152,7 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
 
-  # --- GATEWAY ---
+  # gateway
   nginx:
     image: nginx:alpine
     container_name: nginx-proxy
