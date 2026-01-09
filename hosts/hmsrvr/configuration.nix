@@ -63,31 +63,7 @@
     hostName = "hmsrvr";
     search = [ "lan" ];
     domain = "lan";
-    
-    nameservers = [ 
-      "192.168.0.199" 
-      "1.1.1.1"
-    ];
-
-    defaultGateway = "192.168.0.1";
-
-    interfaces.enp2s0 = {
-      useDHCP = false;
-      ipv4.addresses = [{
-        address = "192.168.0.199";
-        prefixLength = 24;
-      }];
-    };
-
-    networkmanager = {
-      enable = true;
-      dns = "default";
-
-      insertNameservers = [ 
-        "192.168.0.199"
-        "1.1.1.1"
-      ];
-    };
+    networkmanager.enable = true;
   };
 
   networking.firewall.enable = true;
