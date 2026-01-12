@@ -4,7 +4,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 14d --keep 5";
+    options = "--delete-older-than 90d --keep 5";
   };
 
   # Optimize store automatically
