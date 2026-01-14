@@ -1,0 +1,25 @@
+services:
+  # manager
+  manager:
+    build: .
+    image: local-beeper-bridge
+    volumes:
+      - /data/docker/beeper/data:/data
+    stdin_open: true # Interactive mode required for the login code input
+    tty: true
+
+  # bridges
+  whatsapp:
+    image: local-beeper-bridge
+    restart: unless-stopped
+    depends_on:
+      - manager
+    volumes:
+      - /data/docker/beeper/data:/data
+    command: ["run", "sh-whatsapp"]
+  signal:
+    image: local-beeper-bridge
+    restart: unless-stopped
+    volumes:
+      - /data/docker/beeper/data:/data
+    command: ["run", "sh-signal"]
