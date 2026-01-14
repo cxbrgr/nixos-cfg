@@ -23,6 +23,7 @@
     ../../modules/fish.nix
     ../../modules/hypr/default.nix
     ../../modules/spotifyd/home.nix
+    ../../modules/beeper/beeper-client.nix
   ];
 
   home.username = usr.name;

@@ -14,6 +14,7 @@
     ../../modules/zoxide.nix
     ../../modules/atuin.nix
     ../../modules/direnv.nix
+    ../../modules/beeper/beeper-manager.nix
   ];
 
   home.username = usr.name;

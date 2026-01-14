@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{ 
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   options.custom.docker = {
     enable = lib.mkEnableOption "Enable Docker configuration";
