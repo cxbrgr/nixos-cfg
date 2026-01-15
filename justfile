@@ -51,3 +51,12 @@ adguard-down:
 
 adguard-logs:
     docker compose -f docker/adguard-home/docker-compose.yml logs -f
+
+list-partitions:
+    lsblk -o NAME,PATH,SIZE,TYPE,FSTYPE,LABEL,MOUNTPOINT,MODEL
+
+list-disks:
+    sudo fdisk -l
+
+network:
+    nmtui        

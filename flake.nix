@@ -65,5 +65,17 @@
         inputs.home-manager.nixosModules.default
       ];
     };
+
+    nixosConfigurations.nb-pavilion = nixpkgs.lib.nixosSystem {
+      specialArgs = inputs // {
+        inherit usr;
+      };
+      modules = [
+        { nixpkgs.hostPlatform = system; }
+        ./hosts/nb-pavilion/configuration.nix
+        inputs.home-manager.nixosModules.default
+        inputs.nix-flatpak.nixosModules.nix-flatpak
+      ];
+    };
   };
 }
