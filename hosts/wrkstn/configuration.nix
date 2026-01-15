@@ -17,6 +17,7 @@
       ../../modules/spotifyd/system.nix
       ../../modules/sshfs-mounts.nix
       ../../modules/home-manager.nix
+      ../../modules/bluetooth.nix
     ];
 
   system.stateVersion = "25.11";

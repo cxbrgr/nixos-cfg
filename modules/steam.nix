@@ -53,6 +53,8 @@
     };
   };
 
+  hardware.steam-hardware.enable = true;
+
   users.users.${usr.name}.extraGroups = [ "gamemode" ];
 
   home-manager.users.${usr.name} = {
