@@ -55,7 +55,12 @@
 
   hardware.steam-hardware.enable = true;
 
-  users.users.${usr.name}.extraGroups = [ "gamemode" ];
+  users.users.${usr.name}.extraGroups = [
+    "gamemode"
+    "input"
+    "audio"
+    "video"
+  ];
 
   home-manager.users.${usr.name} = {
     programs.mangohud.enable = true;
