@@ -106,7 +106,7 @@ Deploy to a remote host:
 
 ```bash
 nixos-rebuild switch \
-    --target-host user@192.168.x.x \
+    --target-host user@10.10.10.x \
     --use-remote-sudo \
     --flake .#hostname
 ```
