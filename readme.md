@@ -141,11 +141,11 @@ nixos-rebuild switch --flake .#hostname
 
 ## Hosts
 
-| Host     | Description                          |
-|----------|--------------------------------------|
-| `wrkstn` | Desktop workstation with Hyprland    |
-| `hmsrvr` | Headless home server with ZFS        |
-
+| Host          | Description                          |
+|---------------|--------------------------------------|
+| `wrkstn`      | Workstation with Hyprland desktop    |
+| `hmsrvr`      | Home server (headless)        |
+| `nb-pavilion` | Notebook with Gnome desktop          |
 ---
 
 ## Key Modules
