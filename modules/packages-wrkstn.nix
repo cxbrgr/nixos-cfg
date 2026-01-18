@@ -40,6 +40,12 @@
     polkit_gnome      # PolicyKit authentication agent (GUI password prompts)
     polkit            # Toolkit for controlling system-wide privileges
     seahorse          # GNOME keyring manager for encryption keys and passwords
+    gnome-decoder     # QR code decoder
+    # scrcpy wrapped to work properly on Hyprland (forces X11 + OpenGL)
+    (pkgs.writeShellScriptBin "scrcpy" ''
+      export SDL_VIDEODRIVER=x11
+      exec ${pkgs.scrcpy}/bin/scrcpy --render-driver=opengl "$@"
+    '')
 
     # -- Torrents --
     qbittorrent       # Open-source BitTorrent client
