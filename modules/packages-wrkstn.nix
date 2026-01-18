@@ -46,9 +46,6 @@
       export SDL_VIDEODRIVER=x11
       exec ${pkgs.scrcpy}/bin/scrcpy --render-driver=opengl "$@"
     '')
-
-    # -- Torrents --
-    qbittorrent       # Open-source BitTorrent client
   ];
 
   services.flatpak = {
