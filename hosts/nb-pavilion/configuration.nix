@@ -10,16 +10,12 @@
     ./hardware-configuration.nix
     ../../modules/fonts.nix
     ../../modules/nix-gc.nix
+    ../../modules/nix-ld.nix
     ../../modules/home-manager.nix
     ../../modules/wireguard.nix
   ];
 
   system.stateVersion = "25.11";
-
-  # --- BOOT & ZFS ---
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.configurationLimit = 10;
 
   # --- NIX SETTINGS ---
   nix.settings = {
@@ -45,6 +41,11 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  # --- BOOT & ZFS ---
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
 
   # ==========================================
   # network
