@@ -8,11 +8,11 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/fonts.nix
+    ../../modules/home-manager.nix
     ../../modules/nix-gc.nix
     ../../modules/nix-ld.nix
-    ../../modules/home-manager.nix
-    ../../modules/wireguard.nix
+    ../../modules/fonts.nix
+    ../../modules/wireguard-client.nix
   ];
 
   system.stateVersion = "25.11";
