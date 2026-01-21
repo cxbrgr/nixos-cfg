@@ -22,4 +22,11 @@ user:
   
   home.stateVersion = "25.11";
   programs.home-manager.enable = true;
+
+  home.packages = with pkgs; [
+    gnomeExtensions.appindicator            # System tray icons for apps like Discord, Slack
+    gnomeExtensions.dash-to-dock            # macOS-style dock
+    gnomeExtensions.caffeine                # Prevent screen from sleeping (useful for presentations)
+    gnomeExtensions.clipboard-indicator     # Clipboard history manager
+  ];
 }

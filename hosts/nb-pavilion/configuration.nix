@@ -146,6 +146,19 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/gnome/mutter" = {
+          experimental-features = [
+            "scale-monitor-framebuffer"   # Enables fractional scaling (75%, 90%, 125%, etc.)
+            "xwayland-native-scaling"     # Crisp Xwayland apps on HiDPI
+          ];
+        };
+      };
+    }
+  ];
+
   # ==========================================
   # GNOME Remote Desktop (RDP)
   # ==========================================
