@@ -138,7 +138,7 @@
     enable = true;
     excludePackages = [ pkgs.xterm ];
     xkb = {
-      layout = "us,ir";  # US English + Persian/Farsi
+      layout = "us,ir,de";  # US English + Persian/Farsi + German
       options = "grp:alt_shift_toggle";  # Switch layouts with Alt+Shift
     };
   };
