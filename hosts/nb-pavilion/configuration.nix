@@ -215,8 +215,9 @@
     vim
     wget
     git
-    google-chrome
     brave
+    google-chrome
+    networkmanagerapplet  # gnome network manager applet
   ];
 
   # ==========================================
