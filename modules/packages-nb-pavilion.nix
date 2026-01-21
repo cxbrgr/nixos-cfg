@@ -48,7 +48,6 @@
 
     packages = [
       "io.github.kolunmi.Bazaar"                    # package manager
-      "com.github.IsmaelMartinez.teams_for_linux"   # wrk chat
       "org.signal.Signal"                           # instant messanger
     ];
     
