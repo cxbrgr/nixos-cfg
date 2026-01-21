@@ -125,10 +125,6 @@
   # Touchpad
   services.libinput = {
     enable = true;
-    touchpad = {
-      tapping = true;
-      naturalScrolling = true;
-    };
   };
 
   # ==========================================
@@ -244,6 +240,7 @@
     brave
     google-chrome
     networkmanagerapplet  # gnome network manager applet
+    gnome-tweaks          # GNOME settings not in main Settings app
   ];
 
   # ==========================================
