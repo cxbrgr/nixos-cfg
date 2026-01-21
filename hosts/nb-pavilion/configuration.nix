@@ -58,6 +58,7 @@
   };
 
   networking.firewall.enable = true;
+  networking.firewall.trustedInterfaces = [ "cxbrgr" ];
   
   # ==========================================
   # time & locale
