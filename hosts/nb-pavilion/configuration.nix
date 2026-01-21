@@ -86,6 +86,22 @@
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableAllFirmware = true;
 
+  # NVIDIA Prime Sync (render on NVIDIA, output on Intel)
+  # Note: Mobile 840M requires Intel for display output
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    open = false;  # Use proprietary driver
+    nvidiaSettings = true;
+    prime = {
+      sync.enable = true;  # Always use NVIDIA for rendering
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:10:0:0";
+    };
+  };
+
+
   # ==========================================
   # desktop environment
   # ==========================================
