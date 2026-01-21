@@ -1,4 +1,9 @@
-{ lib, configk, pkgs, ... }:
+{ 
+  lib,
+  config,
+  pkgs,
+  ... 
+}:
 {
   users.users.chrisleebear = {
     isNormalUser = true;
