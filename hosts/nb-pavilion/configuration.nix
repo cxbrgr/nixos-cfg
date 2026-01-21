@@ -101,6 +101,10 @@
     };
   };
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   # ==========================================
   # laptop power management
   # ==========================================
