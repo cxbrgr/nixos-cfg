@@ -3,6 +3,7 @@
   pkgs, 
   lib,
   usr,
+  usermap,
   ... 
 }:
 {
@@ -36,7 +37,7 @@
     trusted-users = [ 
       "root"
       usr.name
-      "mehri"
+      usermap.mehri.name
     ];
   };
 
@@ -144,6 +145,7 @@
 
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+  services.gnome.gnome-remote-desktop.enable = true;
 
   # ==========================================
   # audio
@@ -186,9 +188,9 @@
     ];
   };
 
-  users.users.mehri = {
+  users.users.${usermap.mehri.name} = {
     isNormalUser = true;
-    description = "Mehri";
+    description = usermap.mehri.fullName;
     extraGroups = [ 
       "networkmanager"
       "wheel"
@@ -204,8 +206,9 @@
     useUserPackages = true;
     useGlobalPkgs = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = { inherit usr; };
-    users.${usr.name} = import ./home.nix;
+
+    users.${usr.name} = import ./home.nix usr;
+    users.${usermap.mehri.name} = import ./home.nix usermap.mehri;
   };  
 
   # ==========================================

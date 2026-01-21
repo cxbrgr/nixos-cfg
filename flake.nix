@@ -39,6 +39,12 @@
       name = "chrisleebear";
       fullName = "Chris";
     };
+    usermap = {
+      mehri = {
+        name = "mehri";
+        fullName = "Mehri";
+      };
+    };
   in
   {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
@@ -69,6 +75,7 @@
     nixosConfigurations.nb-pavilion = nixpkgs.lib.nixosSystem {
       specialArgs = inputs // {
         inherit usr;
+        inherit usermap;
       };
       modules = [
         { nixpkgs.hostPlatform = system; }
