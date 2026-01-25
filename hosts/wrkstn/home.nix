@@ -15,12 +15,12 @@
     ../../modules/packages-wrkstn.nix
     ../../modules/git.nix
     ../../modules/ghostty.nix
+    ../../modules/kitty.nix
+    ../../modules/fish.nix
+    ../../modules/starship
     ../../modules/direnv.nix
     ../../modules/zoxide.nix
-    ../../modules/kitty.nix
     ../../modules/atuin.nix
-    ../../modules/starship
-    ../../modules/fish.nix
     ../../modules/hypr/default.nix
     ../../modules/spotifyd/home.nix
     ../../modules/beeper/beeper-client.nix

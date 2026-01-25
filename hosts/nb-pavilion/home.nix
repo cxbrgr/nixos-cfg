@@ -9,14 +9,14 @@ user:
     nix-flatpak.homeManagerModules.nix-flatpak
     ../../modules/packages-common.nix
     ../../modules/packages-nb-pavilion.nix
+    ../../modules/git.nix
     ../../modules/ghostty.nix
     ../../modules/kitty.nix
-    ../../modules/zoxide.nix
-    ../../modules/git.nix
     ../../modules/fish.nix
     ../../modules/starship
-    ../../modules/atuin.nix
     ../../modules/direnv.nix
+    ../../modules/zoxide.nix
+    ../../modules/atuin.nix
   ];
 
   home.username = user.name;
