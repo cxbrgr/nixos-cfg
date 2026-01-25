@@ -88,8 +88,9 @@
   # ==========================================
   hardware.graphics = {
     enable = true;
-    intel-gpu-tools.enable = true;
   };
+
+  hardware.intel-gpu-tools.enable = true;
 
   # ==========================================
   # time & locale
