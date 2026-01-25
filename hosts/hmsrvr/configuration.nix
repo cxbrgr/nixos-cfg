@@ -84,6 +84,14 @@
   ];
 
   # ==========================================
+  # graphics
+  # ==========================================
+  hardware.graphics = {
+    enable = true;
+    intel-gpu-tools.enable = true;
+  };
+
+  # ==========================================
   # time & locale
   # ==========================================
   time.timeZone = "Europe/Vienna";
@@ -113,6 +121,7 @@
       "networkmanager"
       "wheel" 
       "docker"
+      "video"  # For GPU device access
     ];
   };
 
