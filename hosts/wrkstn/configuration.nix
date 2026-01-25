@@ -156,9 +156,10 @@
     description = usr.fullName;
     extraGroups = [
       "networkmanager"
-      "wheel"
-      "video"
-      "input"
+      "wheel" 
+      "docker"
+      "video" 
+      "input" 
       "i2c"
     ];
   };

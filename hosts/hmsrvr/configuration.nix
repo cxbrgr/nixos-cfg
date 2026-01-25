@@ -122,7 +122,9 @@
       "networkmanager"
       "wheel" 
       "docker"
-      "video"  # For GPU device access
+      "video" 
+      "input" 
+      "i2c"
     ];
   };
 
