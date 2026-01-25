@@ -36,6 +36,9 @@
     reaper            # Lightweight DAW, good for mastering
     qpwgraph          # Visual patchbay for PipeWire audio routing
 
+    # -- Monitoring --
+    nvtopPackages.nvidia  # GPU monitoring for btop and standalone nvtop
+
     # -- Desktop Utilities --
     polkit_gnome      # PolicyKit authentication agent (GUI password prompts)
     polkit            # Toolkit for controlling system-wide privileges
