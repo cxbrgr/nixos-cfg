@@ -36,6 +36,10 @@
     reaper            # Lightweight DAW, good for mastering
     qpwgraph          # Visual patchbay for PipeWire audio routing
 
+    # -- Emulation / Virtualization --
+    quickemu
+    quickgui
+
     # -- Monitoring --
     nvtopPackages.nvidia  # GPU monitoring for btop and standalone nvtop
 
