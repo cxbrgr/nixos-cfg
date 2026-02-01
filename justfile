@@ -63,6 +63,19 @@ ollama-webui-down:
 ollama-webui-logs:
     docker compose -f docker/ollama-webui/docker-compose.yml logs -f
 
+# Proxy Stack Management
+proxy-up:
+    docker compose -f docker/proxy/docker-compose.yml up -d
+
+proxy-down:
+    docker compose -f docker/proxy/docker-compose.yml down
+
+proxy-logs:
+    docker compose -f docker/proxy/docker-compose.yml logs -f
+
+proxy-reload:
+    docker exec nginx-proxy nginx -s reload
+
 # System Management
 list-partitions:
     lsblk -o NAME,PATH,SIZE,TYPE,FSTYPE,LABEL,MOUNTPOINT,MODEL
