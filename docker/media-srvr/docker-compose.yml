@@ -75,37 +75,6 @@ services:
     restart: unless-stopped
 
   # jelly stack - manage movies & series & co
-  overseerr:
-    image: sctx/overseerr:latest
-    container_name: overseerr
-    environment:
-      - PUID=1000
-      - PGID=100
-      - TZ=Europe/Vienna
-    volumes:
-      - /data/docker/overseerr:/app/config
-    ports:
-      - 10105:5055
-    restart: unless-stopped
-
-  # plex stack - player
-  plex: 
-    image: lscr.io/linuxserver/plex:latest
-    container_name: plex
-    network_mode: host
-    environment:
-      - PUID=1000
-      - PGID=100
-      - TZ=Europe/Vienna
-      - VERSION=docker
-    volumes:
-      - /data/docker/plex:/config
-      - /data/media:/data/media
-    devices:
-      - /dev/dri:/dev/dri # Passes the i5-12400 iGPU for transcoding
-    restart: unless-stopped
-
-  # jelly stack - manage movies & series & co
   jellyseerr:
     image: ghcr.io/fallenbagel/jellyseerr:latest
     init: true

@@ -1,7 +1,7 @@
 services:
   nginx:
     image: nginx:alpine
-    container_name: nginx-proxy
+    container_name: proxy-nginx
     network_mode: host
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
@@ -11,7 +11,7 @@ services:
 
   certbot:
     image: certbot/dns-cloudflare
-    container_name: certbot
+    container_name: proxy-certbot
     volumes:
       - /data/docker/certs:/etc/letsencrypt
       - ../../.keys/cloudflare.ini:/etc/cloudflare/credentials.ini:ro
