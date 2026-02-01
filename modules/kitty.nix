@@ -12,6 +12,9 @@
     };
 
     settings = {
+      shell = "fish";
+      copy_on_select = true;
+
       cursor_trail = 3;
       background_opacity = "0.8";
       window_padding_width = 14;

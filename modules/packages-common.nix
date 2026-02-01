@@ -41,6 +41,8 @@
 
     # -- Nix --
     nh                # Nix CLI helper - prettier nixos-rebuild
+    nil               # Nix language server
+    nixfmt            # Nix formatter
 
     # -- Logs & Files --
     lnav              # Advanced log file navigator with syntax highlighting
