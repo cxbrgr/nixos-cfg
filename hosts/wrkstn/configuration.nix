@@ -1,30 +1,30 @@
-{ 
+{
   config,
-  pkgs, 
+  pkgs,
   lib,
   inputs,
   usr,
-  ... 
+  ...
 }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/fonts.nix
-      ../../modules/nix-gc.nix
-      ../../modules/docker.nix
-      ../../modules/steam.nix
-      ../../modules/spotifyd/system.nix
-      ../../modules/sshfs-mounts.nix
-      ../../modules/home-manager.nix
-      ../../modules/bluetooth.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/fonts.nix
+    ../../modules/nix-gc.nix
+    ../../modules/docker.nix
+    ../../modules/steam.nix
+    ../../modules/spotifyd/system.nix
+    ../../modules/sshfs-mounts.nix
+    ../../modules/home-manager.nix
+    ../../modules/bluetooth.nix
+    ../../modules/ollama.nix
+  ];
 
   system.stateVersion = "25.11";
 
   # --- NIX SETTINGS ---
   nix.settings = {
-    experimental-features = [ 
+    experimental-features = [
       "nix-command"
       "flakes"
     ];
@@ -38,13 +38,14 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
-    trusted-users = [ 
+    trusted-users = [
       "root"
       usr.name
     ];
   };
 
   custom.docker.enable = true;
+  custom.ollama.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -52,8 +53,7 @@
   boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.systemd-boot.consoleMode = "max";
 
-  boot.loader.systemd-boot.extraEntries = 
-  {
+  boot.loader.systemd-boot.extraEntries = {
     "arch.conf" = ''
       title Omarchy (Arch Linux)
       linux /vmlinuz-linux
@@ -63,20 +63,19 @@
     '';
   };
 
-  boot.initrd.luks.devices."cryptlvm".device = "/dev/disk/by-uuid/5c21a2bf-807d-4514-ae6d-cd6d0c468b5e";
+  boot.initrd.luks.devices."cryptlvm".device =
+    "/dev/disk/by-uuid/5c21a2bf-807d-4514-ae6d-cd6d0c468b5e";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   nixpkgs.config.allowUnfree = true;
-
-
 
   # Run unpatched binaries (useful for AppImages, VS Code remote, etc.)
   programs.nix-ld.enable = true;
   services.envfs.enable = true;
 
   hardware.cpu.amd.updateMicrocode = true;
-  hardware.enableAllFirmware = true;  
+  hardware.enableAllFirmware = true;
 
   # ==========================================
   # graphics
@@ -101,7 +100,7 @@
   services.displayManager.autoLogin.user = usr.name;
 
   services.desktopManager.gnome.enable = true;
-  
+
   programs.hyprland.enable = true;
 
   services.xserver.enable = true;
@@ -118,13 +117,13 @@
     domain = "lan";
     networkmanager.enable = true;
   };
-  
+
   # ==========================================
   # audio and bluetooth
   # ==========================================
-  security.rtkit.enable = true;          # required for spotify
+  security.rtkit.enable = true; # required for spotify
 
-  services.pulseaudio.enable = false;    # disable default audio server
+  services.pulseaudio.enable = false; # disable default audio server
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -135,9 +134,11 @@
 
   services.pipewire.wireplumber.extraConfig."51-disable-suspend"."monitor.alsa.rules" = [
     {
-      matches = [{
+      matches = [
+        {
           "node.name" = "~alsa_output.*Sennheiser_EPOS_GSA_70.*";
-      }];
+        }
+      ];
       actions.update-props = {
         "session.suspend-timeout-seconds" = 0;
         "node.always-process" = true;
@@ -153,11 +154,11 @@
   users.users.${usr.name} = {
     isNormalUser = true;
     description = usr.fullName;
-    extraGroups = [ 
+    extraGroups = [
       "networkmanager"
-      "wheel" 
-      "video" 
-      "input" 
+      "wheel"
+      "video"
+      "input"
       "i2c"
     ];
   };
@@ -165,7 +166,7 @@
   # ==========================================
   # home-manager
   # ==========================================
-    home-manager.users.${usr.name}.imports = [ ./home.nix ];
+  home-manager.users.${usr.name}.imports = [ ./home.nix ];
 
   # ==========================================
   # time & locale

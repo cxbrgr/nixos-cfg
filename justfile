@@ -1,5 +1,6 @@
 default: switch
 
+# NixOS Management   
 reload:
     nh os switch . --offline
 
@@ -52,6 +53,17 @@ adguard-down:
 adguard-logs:
     docker compose -f docker/adguard-home/docker-compose.yml logs -f
 
+# Ollama WebUI Management
+ollama-webui-up:
+    docker compose -f docker/ollama-webui/docker-compose.yml up -d
+
+ollama-webui-down:
+    docker compose -f docker/ollama-webui/docker-compose.yml down
+
+ollama-webui-logs:
+    docker compose -f docker/ollama-webui/docker-compose.yml logs -f
+
+# System Management
 list-partitions:
     lsblk -o NAME,PATH,SIZE,TYPE,FSTYPE,LABEL,MOUNTPOINT,MODEL
 

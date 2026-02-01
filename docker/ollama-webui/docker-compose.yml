@@ -1,0 +1,13 @@
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - "10200:8080"
+    environment:
+      - TZ=Europe/Vienna
+      - OLLAMA_BASE_URL=http://wrkstn:11434
+      - WEBUI_AUTH=true
+    volumes:
+      - /data/docker/open-webui:/app/backend/data
+    restart: unless-stopped
