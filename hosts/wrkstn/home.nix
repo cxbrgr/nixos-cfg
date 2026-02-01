@@ -1,6 +1,4 @@
 {
-  config,
-  pkgs,
   illogical-flake,
   nix-flatpak,
   usr,
@@ -15,7 +13,6 @@
     ../../modules/packages-wrkstn.nix
     ../../modules/git.nix
     ../../modules/ghostty.nix
-    ../../modules/kitty.nix
     ../../modules/fish.nix
     ../../modules/starship
     ../../modules/direnv.nix
@@ -31,12 +28,6 @@
 
   home.stateVersion = "25.11";
   programs.home-manager.enable = true;
-
-  xdg.configFile = {
-    "quickshell/shell.qml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/quickshell/ii/shell.qml";
-    "quickshell/qs".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/quickshell/ii";
-    "illogical-impulse/translations".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/quickshell/ii/translations";
-  };
 
   home.sessionVariables = {
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share";
