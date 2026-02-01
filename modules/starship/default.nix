@@ -3,9 +3,7 @@
   ...
 }:
 let
-  # Available themes in ./themes/
-
-  # Change this to switch themes:
+  # Change this to any theme in ./themes/
   activeTheme = "cyberpunk-cstm";
 
   themesDir = ./themes;
