@@ -70,17 +70,15 @@
   
   # TCP Ports for Plex & Services
   networking.firewall.allowedTCPPorts = [ 
+    80    # HTTP (nginx proxy)
+    443   # HTTPS (nginx proxy)
     2049  # NFS
-    32400 # Plex Main Port
-    8324  # Plex Companion
-    32469 # Plex DLNA
   ];
 
   # UDP Ports for Plex (Discovery/Casting)
   networking.firewall.allowedUDPPorts = [ 
     1900  # DLNA
     5353  # Bonjour
-    32410 32412 32413 32414 # Plex GDM Network Discovery
   ];
 
   # ==========================================

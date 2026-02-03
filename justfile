@@ -74,7 +74,7 @@ proxy-logs:
     docker compose -f docker/proxy/docker-compose.yml logs -f
 
 proxy-reload:
-    docker exec nginx-proxy nginx -s reload
+    docker exec proxy-nginx nginx -s reload
 
 # System Management
 list-partitions:
