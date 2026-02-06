@@ -40,16 +40,16 @@ color_bg1 = '#1a1a2e'
 color_bg3 = '#16213e'
 color_blue = '#00d4ff'
 color_cyan = '#00fff5'
-color_green = '#39ff14'
+color_green = '#00ff66ff'
 color_pink = '#ff00ff'
-color_purple = '#bf00ff'
+color_purple = '#9500ffff'
 color_red = '#ff0040'
 color_yellow = '#ffff00'
-color_orange = '#ff6600'
+color_orange = '#ff5b00'
 
 [character]
 error_symbol = "[✗](bold color_red)"
-success_symbol = "[❯](bold color_green)"
+success_symbol = "[❯](bold color_cyan)"
 
 [username]
 show_always = true
@@ -63,10 +63,12 @@ style = "bg:color_cyan fg:color_fg0 bold"
 format = '[ @ $hostname ]($style)'
 
 [directory]
+style = "bg:color_purple fg:color_cyan"
+format = "[ $path ]($style)"
 truncation_length = 2
 truncation_symbol = "…/"
 repo_root_style = "bold cyan"
-repo_root_format = "[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
+repo_root_format = " [$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
 
 [directory.substitutions]
 "Documents" = "󰈙 "
