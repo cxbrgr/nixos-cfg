@@ -27,6 +27,10 @@ build:
 update:
     nh os test . --update --diff always
 
+# Docker
+docker-image-prune:
+    docker image prune -f
+
 # Media Stack Management
 media-up:
     docker compose -f docker/media-srvr/docker-compose.yml up -d

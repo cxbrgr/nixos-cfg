@@ -1,8 +1,6 @@
 {
   config,
   pkgs,
-  lib,
-  inputs,
   usr,
   ...
 }:
@@ -156,10 +154,10 @@
     description = usr.fullName;
     extraGroups = [
       "networkmanager"
-      "wheel" 
+      "wheel"
       "docker"
-      "video" 
-      "input" 
+      "video"
+      "input"
       "i2c"
     ];
   };
