@@ -1,0 +1,22 @@
+services:
+  invokeai:
+    image: ghcr.io/invoke-ai/invokeai:latest
+    container_name: invokeai
+    restart: unless-stopped
+    devices:
+      - nvidia.com/gpu=all
+    ports:
+      - "10012:9090"
+    volumes:
+      # InvokeAI root directory - stores models, outputs, and configuration
+      - /home/chrisleebear/data/docker/invokeai:/invokeai
+      # Share models from ComfyUI
+      - /home/chrisleebear/data/ai/models:/shared-models:ro
+      # Cache directories to prevent redownloading
+      - /home/chrisleebear/data/docker/invokeai/cache/huggingface:/root/.cache/huggingface
+      - /home/chrisleebear/data/docker/invokeai/cache/torch:/root/.cache/torch
+    environment:
+      - TZ=Europe/Vienna
+      - INVOKEAI_ROOT=/invokeai
+      # Optional: Add HuggingFace token for gated models
+      # - HUGGING_FACE_HUB_TOKEN=your_token_here
