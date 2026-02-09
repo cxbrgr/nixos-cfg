@@ -16,6 +16,7 @@
     ../../modules/home-manager.nix
     ../../modules/bluetooth.nix
     ../../modules/ollama.nix
+    ../../modules/wdpassport-utils
   ];
 
   system.stateVersion = "25.11";
@@ -44,6 +45,7 @@
 
   custom.docker.enable = true;
   custom.ollama.enable = true;
+  custom.wdpassport.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -159,6 +161,7 @@
       "video"
       "input"
       "i2c"
+      "disk"
     ];
   };
 

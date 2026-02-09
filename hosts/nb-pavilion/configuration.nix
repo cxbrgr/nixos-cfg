@@ -1,10 +1,8 @@
-{ 
-  config,
-  pkgs, 
-  lib,
+{
+  pkgs,
   usr,
   usermap,
-  ... 
+  ...
 }:
 {
   imports = [
@@ -14,13 +12,14 @@
     ../../modules/nix-ld.nix
     ../../modules/fonts.nix
     ../../modules/wireguard-client.nix
+    ../../modules/wdpassport-utils
   ];
 
   system.stateVersion = "25.11";
 
   # --- NIX SETTINGS ---
   nix.settings = {
-    experimental-features = [ 
+    experimental-features = [
       "nix-command"
       "flakes"
     ];
@@ -34,7 +33,7 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
-    trusted-users = [ 
+    trusted-users = [
       "root"
       usr.name
       usermap.mehri.name
@@ -42,6 +41,8 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  custom.wdpassport.enable = true;
 
   # --- BOOT & ZFS ---
   boot.loader.systemd-boot.enable = true;
@@ -60,7 +61,7 @@
 
   networking.firewall.enable = true;
   networking.firewall.trustedInterfaces = [ "cxbrgr" ];
-  
+
   # ==========================================
   # time & locale
   # ==========================================
@@ -94,10 +95,10 @@
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
-    open = false;  # Use proprietary driver
+    open = false; # Use proprietary driver
     nvidiaSettings = true;
     prime = {
-      sync.enable = true;  # Always use NVIDIA for rendering
+      sync.enable = true; # Always use NVIDIA for rendering
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:10:0:0";
     };
@@ -111,7 +112,7 @@
   # laptop power management
   # ==========================================
   services.thermald.enable = true;
-  services.power-profiles-daemon.enable = false;  # Conflicts with TLP
+  services.power-profiles-daemon.enable = false; # Conflicts with TLP
   services.tlp = {
     enable = true;
     settings = {
@@ -134,8 +135,8 @@
     enable = true;
     excludePackages = [ pkgs.xterm ];
     xkb = {
-      layout = "us,ir,de";  # US English + Persian/Farsi + German
-      options = "grp:alt_shift_toggle";  # Switch layouts with Alt+Shift
+      layout = "us,ir,de"; # US English + Persian/Farsi + German
+      options = "grp:alt_shift_toggle"; # Switch layouts with Alt+Shift
     };
   };
 
@@ -147,8 +148,8 @@
       settings = {
         "org/gnome/mutter" = {
           experimental-features = [
-            "scale-monitor-framebuffer"   # Enables fractional scaling (75%, 90%, 125%, etc.)
-            "xwayland-native-scaling"     # Crisp Xwayland apps on HiDPI
+            "scale-monitor-framebuffer" # Enables fractional scaling (75%, 90%, 125%, etc.)
+            "xwayland-native-scaling" # Crisp Xwayland apps on HiDPI
           ];
         };
       };
@@ -159,7 +160,7 @@
   # GNOME Remote Desktop (RDP)
   # ==========================================
   services.gnome.gnome-remote-desktop.enable = true;
-  
+
   systemd.services.gnome-remote-desktop = {
     wantedBy = [ "graphical.target" ];
   };
@@ -198,21 +199,23 @@
   users.users.${usr.name} = {
     isNormalUser = true;
     description = usr.fullName;
-    extraGroups = [ 
+    extraGroups = [
       "networkmanager"
-      "wheel" 
+      "wheel"
       "docker"
+      "disk"
     ];
   };
 
   users.users.${usermap.mehri.name} = {
     isNormalUser = true;
     description = usermap.mehri.fullName;
-    extraGroups = [ 
+    extraGroups = [
       "networkmanager"
       "wheel"
       "video"
       "audio"
+      "disk"
     ];
   };
 
@@ -226,7 +229,7 @@
 
     users.${usr.name} = import ./home.nix usr;
     users.${usermap.mehri.name} = import ./home.nix usermap.mehri;
-  };  
+  };
 
   # ==========================================
   # packages
@@ -239,8 +242,8 @@
     git
     brave
     google-chrome
-    networkmanagerapplet  # gnome network manager applet
-    gnome-tweaks          # GNOME settings not in main Settings app
+    networkmanagerapplet # gnome network manager applet
+    gnome-tweaks # GNOME settings not in main Settings app
   ];
 
   # ==========================================
