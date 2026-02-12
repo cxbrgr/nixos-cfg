@@ -14,7 +14,7 @@
 #
 # OPTION 1: Add groups directly to user definitions (recommended)
 #   In your configuration.nix, add to each gaming user:
-#   
+#
 #   users.users.chrisleebear = {
 #     extraGroups = [ "gamemode" "input" "audio" "video" ];
 #   };
@@ -35,9 +35,9 @@
 #   }
 #
 # ============================================================================
-{ 
+{
   pkgs,
-  ... 
+  ...
 }:
 {
   programs = {
@@ -77,10 +77,10 @@
         mangohud
         steamtinkerlaunch
 
-        xorg.libXcursor
-        xorg.libXi
-        xorg.libXinerama
-        xorg.libXScrnSaver
+        libXcursor
+        libXi
+        libXinerama
+        libXScrnSaver
         libpng
         libpulseaudio
         libvorbis
