@@ -21,6 +21,7 @@
     ../../modules/hypr/default.nix
     ../../modules/spotifyd/home.nix
     ../../modules/beeper/beeper-client.nix
+    ../../modules/zed.nix
   ];
 
   home.username = usr.name;
