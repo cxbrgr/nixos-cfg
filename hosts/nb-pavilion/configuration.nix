@@ -13,9 +13,12 @@
     ../../modules/fonts.nix
     ../../modules/wireguard-client.nix
     ../../modules/wdpassport-utils
+    ../../modules/auto-upgrade.nix
   ];
 
   system.stateVersion = "25.11";
+
+  custom.autoUpgrade.enable = false;
 
   # --- NIX SETTINGS ---
   nix.settings = {

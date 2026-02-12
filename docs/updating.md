@@ -146,3 +146,37 @@ just gc                       # Clean up unreferenced store paths
 ```
 
 You can also select any previous generation from the GRUB/systemd-boot menu at boot time — useful if a bad update makes the system unbootable.
+
+### Automatic Upgrades (nb-pavilion)
+
+The `nb-pavilion` laptop runs unattended automatic upgrades via `modules/auto-upgrade.nix`. This wraps the built-in `system.autoUpgrade` with automatic rollback on failure.
+
+**How it works:**
+
+1. A systemd timer triggers `nixos-upgrade.service` daily at 04:00 (with up to 45min random delay)
+2. Before upgrading, the script records the current system generation
+3. Runs `nixos-rebuild switch --flake <repo> --upgrade` to pull the latest `flake.lock` and rebuild
+4. If the build or activation **fails**, it automatically activates the previous generation and sends a `wall` message to any logged-in user
+5. If `allowReboot = true` (default) and the kernel changed, the system reboots within the configured window (02:00–06:00)
+
+**Monitoring:**
+
+```bash
+# Check timer schedule
+systemctl list-timers nixos-upgrade.timer
+
+# Check last upgrade result
+systemctl status nixos-upgrade.service
+
+# Full upgrade logs
+journalctl -u nixos-upgrade.service
+```
+
+**Configuration** (in `hosts/nb-pavilion/configuration.nix`):
+
+```nix
+custom.autoUpgrade.enable = true;
+
+**Limitations:**
+- Rollback protects against **build and activation failures** only. If a build succeeds but a service misbehaves at runtime, that won't trigger a rollback.
+- The device must be online and awake at the scheduled time. Missed upgrades run on next boot (persistent timer).

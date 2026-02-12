@@ -55,7 +55,7 @@ just update
 ### Clone with Submodules
 
 ```bash
-git clone --recurse-submodules git@github.com:chr-ber/wrkstn-system-config.git ~/nixos-cfg
+git clone --recurse-submodules git@github.com:cxbrgr/nixos-cfg.git ~/nixos-cfg
 ```
 
 Or if already cloned without submodules:
