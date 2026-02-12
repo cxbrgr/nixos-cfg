@@ -1,6 +1,9 @@
 /result
 /pass
 /virtualmachines/data
+
+.claude/*.local.*
+
 .aider*
 .cache
 .keys
