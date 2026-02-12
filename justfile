@@ -1,6 +1,6 @@
 default: switch
 
-# NixOS Management   
+# NixOS Management
 reload:
     nh os switch . --offline
 
@@ -16,16 +16,31 @@ switch-ii:
 reload-ii:
     qs -c $qsConfig kill 2>/dev/null || true
     (qs -c $qsConfig >/dev/null 2>&1 &)
-    hyprctl reload && hyprctl reload    
+    hyprctl reload && hyprctl reload
 
 switch-dry:
-    nh os switch --dry .    
+    nh os switch --dry .
 
 build:
     nh os build .
 
 update:
     nh os test . --update --diff always
+
+update-input INPUT:
+    nix flake update {{INPUT}}
+
+flake-lock-status:
+    nix flake metadata
+
+generations:
+    sudo nix-env --list-generations -p /nix/var/nix/profiles/system
+
+rollback:
+    sudo nixos-rebuild switch --rollback
+
+gc:
+    sudo nix-collect-garbage -d && nix-collect-garbage -d
 
 # Docker
 docker-image-prune:
@@ -88,4 +103,4 @@ list-disks:
     sudo fdisk -l
 
 network:
-    nmtui        
+    nmtui
