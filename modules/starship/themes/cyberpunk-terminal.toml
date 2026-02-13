@@ -1,0 +1,164 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](color_cyan)\
+$username\
+[](bg:color_cyan fg:color_pink)\
+$hostname\
+[](bg:bright-black fg:cyan)\
+$directory\
+[](fg:color_purple bg:color_blue)\
+$git_branch\
+$git_status\
+[](fg:color_blue bg:color_green)\
+$c\
+$cpp\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+$nix_shell\
+[](fg:color_green bg:color_bg3)\
+$docker_context\
+$conda\
+$pixi\
+[](fg:color_bg3 bg:color_bg1)\
+$time\
+[ ](fg:color_bg1)\
+$line_break$character"""
+
+palette = 'terminal_inherit'
+
+[palettes.terminal_inherit]
+color_fg0 = 'black'
+color_fg_light = 'white'
+color_bg1 = 'black'
+color_bg3 = 'bright-black'
+color_blue = 'blue'
+color_cyan = 'cyan'
+color_green = 'green'
+color_pink = 'bright-red'
+color_purple = 'purple'
+color_red = 'red'
+color_yellow = 'yellow'
+color_orange = 'bright-red'
+
+[character]
+error_symbol = "[✗](bold color_red)"
+success_symbol = "[❯](bold color_cyan)"
+
+[username]
+show_always = true
+style_user = "bg:black fg:blue bold"
+style_root = "bg:black fg:red bold"
+format = '[ $user ]($style)'
+
+[hostname]
+ssh_only = false
+style = "bg:color_cyan fg:color_fg0 bold"
+format = '[ @ $hostname ]($style)'
+
+[directory]
+style = "bg:black fg:cyan"
+format = "[ $path ]($style)"
+truncation_length = 2
+truncation_symbol = "…/"
+repo_root_style = "bg:black fg:cyan bold"
+repo_root_format = "[ $repo_root]($repo_root_style)[$path ]($style)[$read_only]($read_only_style)"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol $branch ](fg:color_fg0 bg:color_blue bold)]($style)'
+
+[git_status]
+style = "bg:color_blue"
+format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_blue bold)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_green bold)]($style)'
+
+[c]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_green bold)]($style)'
+
+[cpp]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_green bold)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_green bold)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_green bold)]($style)'
+
+[php]
+symbol = ""
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_green bold)]($style)'
+
+[java]
+symbol = ""
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_green bold)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_green bold)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_green bold)]($style)'
+
+[python]
+symbol = ""
+style = "bg:color_green"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_green bold)]($style)'
+
+[nix_shell]
+symbol = " "
+style = "bg:color_green"
+format = '[[ $symbol$state ](fg:color_fg0 bg:color_green bold)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:color_cyan bg:color_bg3)]($style)'
+
+[conda]
+style = "bg:color_bg3"
+format = '[[ $symbol( $environment) ](fg:color_cyan bg:color_bg3)]($style)'
+
+[pixi]
+style = "bg:color_bg3"
+format = '[[ $symbol( $version)( $environment) ](fg:color_cyan bg:color_bg3)]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:color_bg1"
+format = '[[  $time ](fg:purple bg:color_bg1)]($style)'
+
+[line_break]
+disabled = false

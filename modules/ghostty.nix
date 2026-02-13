@@ -13,7 +13,11 @@
       # Window
       window-padding-x = 14;
       window-padding-y = 14;
-      background-opacity = 0.75;
+
+      # Can only use either one of those options
+      background-opacity = 0.90;
+      #background-blur = 30;
+
       window-decoration = "none";
 
       # Font
@@ -21,8 +25,8 @@
       font-size = 12;
       adjust-cell-height = "15%";
 
-      # Theme - matching Gruvbox for consistency with Starship
-      theme = "Gruvbox Dark";
+      # Theme
+      theme = "Catppuccin Mocha";
       minimum-contrast = 1.1;
 
       # Cursor

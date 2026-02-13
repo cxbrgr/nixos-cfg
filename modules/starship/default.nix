@@ -4,7 +4,7 @@
 }:
 let
   # Change this to any theme in ./themes/
-  activeTheme = "cyberpunk-cstm";
+  activeTheme = "cyberpunk-terminal";
 
   themesDir = ./themes;
   themeFile = themesDir + "/${activeTheme}.toml";
