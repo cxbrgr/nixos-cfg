@@ -3,11 +3,11 @@
     "dotfiles-fork": {
       "flake": false,
       "locked": {
-        "lastModified": 1771017936,
-        "narHash": "sha256-2ozsNGW3lJR/CAxtcmZgk3ltGQy+Bo4Y2AUAKP+HpxM=",
+        "lastModified": 1771018746,
+        "narHash": "sha256-sLC7dzDUA0uJzE1Kk9oeEympuYtlr7QtponrsiC9G3o=",
         "ref": "refs/heads/testing-upstream",
-        "rev": "0b8acbcda69f97e278de1c6e3942c2e87651e9c6",
-        "revCount": 5895,
+        "rev": "ec498892ed0660e58537f959ac0b6c5d300f2a2b",
+        "revCount": 5896,
         "submodules": true,
         "type": "git",
         "url": "file:sources/chr-ber-dots-hyprland"
@@ -47,11 +47,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771014882,
-        "narHash": "sha256-M9t6MOoxVhOHDqDP+Ok8TKNN31G+6IR1m+ZAqWc1acE=",
+        "lastModified": 1771018093,
+        "narHash": "sha256-STUF5x1eQNKrhGn53WH1GpzBCsG719yl5rYnm7+1c4I=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b3258dece8af087fd471a4ca6b106d02c330dd37",
+        "rev": "26dfad95d92c50a56ce708f4256bf720bb30a630",
         "type": "github"
       },
       "original": {
