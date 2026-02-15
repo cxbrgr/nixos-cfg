@@ -1,0 +1,51 @@
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - /data/docker/home-assistant:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    environment:
+      TZ: Europe/Berlin
+
+  # Speech-to-Text
+  whisper:
+    container_name: whisper
+    image: rhasspy/wyoming-whisper
+    command: --model medium-int8 --language en
+    volumes:
+      - /data/docker/wyoming-whisper:/data
+    environment:
+      - TZ=Europe/Berlin
+    restart: unless-stopped
+    ports:
+      - "10300:10300"
+
+  # Text-to-Speech
+  piper:
+    container_name: piper
+    image: rhasspy/wyoming-piper
+    command: --voice en_US-lessac-medium
+    volumes:
+      - /data/docker/piper:/data
+    environment:
+      - TZ=Europe/Berlin
+    restart: unless-stopped
+    ports:
+      - "10200:10200"
+
+  # Voice activity detection
+  openwakeword:
+    container_name: openwakeword
+    image: rhasspy/wyoming-openwakeword
+    volumes:
+      - /data/docker/openwakeword:/data
+    environment:
+      - TZ=Europe/Berlin
+    restart: unless-stopped
+    ports:
+      - "10400:10400"

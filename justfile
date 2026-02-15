@@ -82,6 +82,19 @@ ollama-webui-down:
 ollama-webui-logs:
     docker compose -f docker/ollama-webui/docker-compose.yml logs -f
 
+# Home Assistant Management
+home-assistant-up:
+    docker compose -f docker/home-assistant/docker-compose.yml up -d
+
+home-assistant-down:
+    docker compose -f docker/home-assistant/docker-compose.yml down
+
+home-assistant-restart:
+    docker compose -f docker/home-assistant/docker-compose.yml restart
+
+home-assistant-logs:
+    docker compose -f docker/home-assistant/docker-compose.yml logs -f
+
 # Proxy Stack Management
 proxy-up:
     docker compose -f docker/proxy/docker-compose.yml up -d
