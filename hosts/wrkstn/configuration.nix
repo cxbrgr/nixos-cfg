@@ -140,8 +140,7 @@
         }
       ];
       actions.update-props = {
-        "session.suspend-timeout-seconds" = 0;
-        "node.always-process" = true;
+        "session.suspend-timeout-seconds" = 300;
         "dither.method" = "wannamaker3";
         "dither.noise" = 1;
       };
