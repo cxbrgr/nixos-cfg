@@ -1,9 +1,9 @@
-{ 
+{
   config,
-  pkgs, 
+  pkgs,
   lib,
   usr,
-  ... 
+  ...
 }:
 {
   imports = [
@@ -12,13 +12,14 @@
     ../../modules/nix-gc.nix
     ../../modules/docker.nix
     ../../modules/nix-ld.nix
+    ../../modules/vaultwarden.nix
   ];
 
   system.stateVersion = "25.11";
 
   # --- NIX SETTINGS ---
   nix.settings = {
-    experimental-features = [ 
+    experimental-features = [
       "nix-command"
       "flakes"
     ];
@@ -32,7 +33,7 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
-    trusted-users = [ 
+    trusted-users = [
       "root"
       usr.name
     ];
@@ -44,7 +45,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 10;
-  
+
   # Enable ZFS
   boot.supportedFilesystems = [ "zfs" ];
   networking.hostId = "1f487b70";
@@ -67,18 +68,18 @@
   };
 
   networking.firewall.enable = true;
-  
+
   # TCP Ports for Plex & Services
-  networking.firewall.allowedTCPPorts = [ 
-    80    # HTTP (nginx proxy)
-    443   # HTTPS (nginx proxy)
-    2049  # NFS
+  networking.firewall.allowedTCPPorts = [
+    80 # HTTP (nginx proxy)
+    443 # HTTPS (nginx proxy)
+    2049 # NFS
   ];
 
   # UDP Ports for Plex (Discovery/Casting)
-  networking.firewall.allowedUDPPorts = [ 
-    1900  # DLNA
-    5353  # Bonjour
+  networking.firewall.allowedUDPPorts = [
+    1900 # DLNA
+    5353 # Bonjour
   ];
 
   # ==========================================
@@ -116,12 +117,12 @@
   users.users.${usr.name} = {
     isNormalUser = true;
     description = usr.fullName;
-    extraGroups = [ 
+    extraGroups = [
       "networkmanager"
-      "wheel" 
+      "wheel"
       "docker"
-      "video" 
-      "input" 
+      "video"
+      "input"
       "i2c"
     ];
   };
@@ -141,6 +142,6 @@
   # services
   # ==========================================
   services.openssh.enable = true;
-  
+
   custom.docker.enable = true;
 }
