@@ -88,6 +88,29 @@
             letter-spacing: 0.05em;
         }
 
+        .tagline a {
+            display: inline-block;
+            margin-top: 0.6rem;
+            padding: 0.4rem 1.2rem;
+            background: transparent;
+            border: 1px solid #ff6a13;
+            border-radius: 999px;
+            color: #ff6a13;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 8px rgba(255, 106, 19, 0.4);
+        }
+
+        .tagline a:hover {
+            background: rgba(255, 106, 19, 0.12);
+            box-shadow: 0 0 20px rgba(255, 106, 19, 0.3), 0 0 40px rgba(255, 106, 19, 0.1);
+            border-color: #ff8533;
+            color: #ff8533;
+        }
+
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -194,6 +217,64 @@
             opacity: 0.6;
         }
 
+        /* Infrastructure section - subdued styling */
+        .infra-section {
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .infra-section:hover {
+            opacity: 0.9;
+        }
+
+        .infra-title {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1rem;
+        }
+
+        .infra-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            justify-content: center;
+        }
+
+        .infra-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 400;
+            transition: all 0.2s ease;
+        }
+
+        .infra-chip:hover {
+            color: var(--text-primary);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .infra-chip-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--text-secondary);
+            opacity: 0.5;
+        }
+
         @media (max-width: 600px) {
             .logo {
                 font-size: 2.2rem;
@@ -228,6 +309,27 @@
                 <p class="card-description">Discover and request new content to add to the library.</p>
                 <div class="card-arrow">→</div>
             </a>
+        </div>
+
+        <div class="infra-section">
+            <h3 class="infra-title">Infrastructure</h3>
+            <div class="infra-grid">
+                <a href="https://prowlarr.stream.cxbrgr.com" class="infra-chip" target="_blank">
+                    <span class="infra-chip-dot"></span> Prowlarr
+                </a>
+                <a href="https://sonarr.stream.cxbrgr.com" class="infra-chip" target="_blank">
+                    <span class="infra-chip-dot"></span> Sonarr
+                </a>
+                <a href="https://radarr.stream.cxbrgr.com" class="infra-chip" target="_blank">
+                    <span class="infra-chip-dot"></span> Radarr
+                </a>
+                <a href="https://bazarr.stream.cxbrgr.com" class="infra-chip" target="_blank">
+                    <span class="infra-chip-dot"></span> Bazarr
+                </a>
+                <a href="https://sabnzbd.stream.cxbrgr.com" class="infra-chip" target="_blank">
+                    <span class="infra-chip-dot"></span> SABnzbd
+                </a>
+            </div>
         </div>
         
         <p class="footer">stream.cxbrgr.com</p>
