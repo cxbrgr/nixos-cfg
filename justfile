@@ -42,6 +42,9 @@ rollback:
 gc:
     sudo nix-collect-garbage -d && nix-collect-garbage -d
 
+update-sources:
+    git submodule update --init --recursive --remote
+
 # Docker
 docker-image-prune:
     docker image prune -f

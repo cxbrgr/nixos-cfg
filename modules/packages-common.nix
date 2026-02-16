@@ -38,6 +38,7 @@
     jq                # Lightweight command-line JSON processor
     just              # Command-line task runner (like make but simpler)
     direnv            # Directory-based environment variable management
+    nodejs            # JavaScript runtime (includes npm)
 
     # -- Nix --
     nh                # Nix CLI helper - prettier nixos-rebuild
