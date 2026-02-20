@@ -33,7 +33,6 @@
     alsa-scarlett-gui # GUI for Focusrite Scarlett audio interfaces
     playerctl # Command-line tool for controlling media players
     bitwig-studio # Digital audio workstation (DAW)
-    reaper # Lightweight DAW, good for mastering
     qpwgraph # Visual patchbay for PipeWire audio routing
 
     # -- Emulation / Virtualization --
