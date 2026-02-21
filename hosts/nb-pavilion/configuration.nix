@@ -92,8 +92,8 @@
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableAllFirmware = true;
 
-  # NVIDIA Prime Sync (render on NVIDIA, output on Intel)
-  # Note: Mobile 840M requires Intel for display output
+  # NVIDIA Prime Offload (render on Intel iGPU by default, offload to NVIDIA on demand)
+  # Use `nvidia-offload <command>` to run specific apps on the discrete GPU
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
@@ -101,7 +101,10 @@
     open = false; # Use proprietary driver
     nvidiaSettings = true;
     prime = {
-      sync.enable = true; # Always use NVIDIA for rendering
+      offload = {
+        enable = true;
+        enableOffloadCmd = true; # Provides `nvidia-offload` wrapper command
+      };
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:10:0:0";
     };
@@ -145,6 +148,10 @@
 
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+
+  # Disable gnome-software auto-start — it consumes ~40% CPU in the background
+  environment.gnome.excludePackages = [ pkgs.gnome-software ];
+  services.packagekit.enable = false;
 
   programs.dconf.profiles.user.databases = [
     {
