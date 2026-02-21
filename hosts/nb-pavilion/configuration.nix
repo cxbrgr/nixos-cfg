@@ -2,6 +2,7 @@
   pkgs,
   usr,
   usermap,
+  claude-desktop,
   ...
 }:
 {
@@ -254,6 +255,7 @@
     google-chrome
     networkmanagerapplet # gnome network manager applet
     gnome-tweaks # GNOME settings not in main Settings app
+    claude-desktop.packages.x86_64-linux.claude-desktop # Claude AI desktop app
   ];
 
   # ==========================================
