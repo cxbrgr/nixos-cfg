@@ -113,7 +113,7 @@ proxy-reload:
 
 # OpenClaw Management
 openclaw-up:
-    docker compose -f docker/openclaw/docker-compose.yml up -d openclaw-gateway
+    docker compose -f docker/openclaw/docker-compose.yml up -d
 
 openclaw-down:
     docker compose -f docker/openclaw/docker-compose.yml down
