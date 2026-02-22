@@ -111,6 +111,19 @@ proxy-logs:
 proxy-reload:
     docker exec proxy-nginx nginx -s reload
 
+# OpenClaw Management
+openclaw-up:
+    docker compose -f docker/openclaw/docker-compose.yml up -d openclaw-gateway
+
+openclaw-down:
+    docker compose -f docker/openclaw/docker-compose.yml down
+
+openclaw-logs:
+    docker compose -f docker/openclaw/docker-compose.yml logs -f
+
+openclaw-cli *ARGS:
+    docker compose -f docker/openclaw/docker-compose.yml run --rm openclaw-cli {{ARGS}}
+
 # System Management
 list-partitions:
     lsblk -o NAME,PATH,SIZE,TYPE,FSTYPE,LABEL,MOUNTPOINT,MODEL

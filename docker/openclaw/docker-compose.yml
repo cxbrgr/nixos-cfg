@@ -1,0 +1,24 @@
+services:
+  openclaw-gateway:
+    image: ghcr.io/phioranex/openclaw-docker:latest
+    container_name: openclaw-gateway
+    command: gateway start --foreground
+    ports:
+      - "18789:18789"
+    environment:
+      - TZ=Europe/Vienna
+    volumes:
+      - /data/docker/openclaw:/home/node/.openclaw
+      - /data/docker/openclaw/workspace:/home/node/.openclaw/workspace
+    restart: unless-stopped
+
+  openclaw-cli:
+    image: ghcr.io/phioranex/openclaw-docker:latest
+    container_name: openclaw-cli
+    volumes:
+      - /data/docker/openclaw:/home/node/.openclaw
+      - /data/docker/openclaw/workspace:/home/node/.openclaw/workspace
+    profiles:
+      - cli
+    stdin_open: true
+    tty: true
