@@ -24,10 +24,10 @@
     "dotfiles-fork": {
       "flake": false,
       "locked": {
-        "lastModified": 1771415685,
-        "narHash": "sha256-T9dAd3qyQr1GmDZZ37u4kyNW14SjokDkzFNG1ikgVCs=",
+        "lastModified": 1771700843,
+        "narHash": "sha256-b4pOrFhkegHg5kux0xSJRG13RVlGD3qr+dT/RnlbzQU=",
         "ref": "refs/heads/testing-upstream",
-        "rev": "83b553bded8d8a50f4016fa001c789e8d064fb4b",
+        "rev": "e2e04cbf807c78f0121935b5277fd8636a2e12bd",
         "revCount": 5902,
         "submodules": true,
         "type": "git",
