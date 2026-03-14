@@ -74,12 +74,18 @@
     80 # HTTP (nginx proxy)
     443 # HTTPS (nginx proxy)
     2049 # NFS
+    21115 # RustDesk NAT type test
+    21116 # RustDesk ID server
+    21117 # RustDesk relay
+    21118 # RustDesk web client (hbbs)
+    21119 # RustDesk web client (hbbr)
   ];
 
   # UDP Ports for Plex (Discovery/Casting)
   networking.firewall.allowedUDPPorts = [
     1900 # DLNA
     5353 # Bonjour
+    21116 # RustDesk ID server (UDP)
   ];
 
   # ==========================================
