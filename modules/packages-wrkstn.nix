@@ -20,6 +20,7 @@
     vscode # Source code editor by Microsoft
     jetbrains.rider # Cross-platform .NET IDE
     remmina # Remote desktop client (RDP, VNC, SSH)
+    rustdesk-flutter # Self-hosted remote desktop (RustDesk)
     antigravity # Google AGI coding agent
     opencode # Open source AGI coding agent
     claude-code # Anthropic AGI coding agent

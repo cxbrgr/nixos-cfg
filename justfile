@@ -124,6 +124,19 @@ openclaw-logs:
 openclaw-cli *ARGS:
     docker compose -f docker/openclaw/docker-compose.yml run --rm openclaw-cli {{ARGS}}
 
+# RustDesk Remote Desktop
+rustdesk-up:
+    docker compose -f docker/rustdesk/docker-compose.yml up -d
+
+rustdesk-down:
+    docker compose -f docker/rustdesk/docker-compose.yml down
+
+rustdesk-logs:
+    docker compose -f docker/rustdesk/docker-compose.yml logs -f
+
+rustdesk-key:
+    cat /data/docker/rustdesk/id_ed25519.pub
+
 # System Management
 list-partitions:
     lsblk -o NAME,PATH,SIZE,TYPE,FSTYPE,LABEL,MOUNTPOINT,MODEL
