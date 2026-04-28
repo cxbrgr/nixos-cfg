@@ -168,15 +168,6 @@
   ];
 
   # ==========================================
-  # GNOME Remote Desktop (RDP)
-  # ==========================================
-  services.gnome.gnome-remote-desktop.enable = true;
-
-  systemd.services.gnome-remote-desktop = {
-    wantedBy = [ "graphical.target" ];
-  };
-
-  # ==========================================
   # audio
   # ==========================================
   security.rtkit.enable = true;
