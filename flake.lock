@@ -111,17 +111,19 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1774402626,
-        "narHash": "sha256-sksKfX5fjG+lLZBrJT8q1yGl5Y7ucUg6Eo2IOAybhBA=",
-        "owner": "soymou",
-        "repo": "illogical-flake",
-        "rev": "1dab49284ce76f3fa9ed317282ad7c94a782f6ba",
-        "type": "github"
+        "lastModified": 1777393486,
+        "narHash": "sha256-7E52XqG4ambJxJ5mcMXdNnvvWrgSOUt5cT/DbnLcXIk=",
+        "ref": "refs/heads/main",
+        "rev": "45e8562b9b2b98b34e326a176970f70f4305db02",
+        "revCount": 70,
+        "submodules": true,
+        "type": "git",
+        "url": "file:sources/chr-ber-illogical-flake"
       },
       "original": {
-        "owner": "soymou",
-        "repo": "illogical-flake",
-        "type": "github"
+        "submodules": true,
+        "type": "git",
+        "url": "file:sources/chr-ber-illogical-flake"
       }
     },
     "nix-flatpak": {

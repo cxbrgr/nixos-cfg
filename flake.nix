@@ -15,7 +15,7 @@
     };
 
     illogical-flake = {
-      url = "github:soymou/illogical-flake";
+      url = "git+file:sources/chr-ber-illogical-flake?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.dotfiles.follows = "dotfiles-fork";
     };
@@ -30,64 +30,64 @@
     };
   };
 
-  outputs = 
-  { 
-    self,
-    nixpkgs,
-    home-manager,
-    illogical-flake,
-    ... 
-  }@inputs: 
-  let
-    system = "x86_64-linux";
-    usr = {
-      name = "chrisleebear";
-      fullName = "Chris";
-    };
-    usermap = {
-      mehri = {
-        name = "mehri";
-        fullName = "Mehri";
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      illogical-flake,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+      usr = {
+        name = "chrisleebear";
+        fullName = "Chris";
+      };
+      usermap = {
+        mehri = {
+          name = "mehri";
+          fullName = "Mehri";
+        };
+      };
+    in
+    {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+
+      nixosConfigurations.wrkstn = nixpkgs.lib.nixosSystem {
+        specialArgs = inputs // {
+          inherit usr;
+        };
+        modules = [
+          { nixpkgs.hostPlatform = system; }
+          ./hosts/wrkstn/configuration.nix
+          inputs.home-manager.nixosModules.default
+          inputs.nix-flatpak.nixosModules.nix-flatpak
+        ];
+      };
+
+      nixosConfigurations.hmsrvr = nixpkgs.lib.nixosSystem {
+        specialArgs = inputs // {
+          inherit usr;
+        };
+        modules = [
+          { nixpkgs.hostPlatform = system; }
+          ./hosts/hmsrvr/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
+
+      nixosConfigurations.nb-pavilion = nixpkgs.lib.nixosSystem {
+        specialArgs = inputs // {
+          inherit usr;
+          inherit usermap;
+        };
+        modules = [
+          { nixpkgs.hostPlatform = system; }
+          ./hosts/nb-pavilion/configuration.nix
+          inputs.home-manager.nixosModules.default
+          inputs.nix-flatpak.nixosModules.nix-flatpak
+        ];
       };
     };
-  in
-  {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-
-    nixosConfigurations.wrkstn = nixpkgs.lib.nixosSystem {
-      specialArgs = inputs // {
-        inherit usr;
-      };      
-      modules = [
-        { nixpkgs.hostPlatform = system; }
-        ./hosts/wrkstn/configuration.nix
-        inputs.home-manager.nixosModules.default
-        inputs.nix-flatpak.nixosModules.nix-flatpak
-      ];
-    };
-
-    nixosConfigurations.hmsrvr = nixpkgs.lib.nixosSystem {
-      specialArgs = inputs // {
-        inherit usr;
-      };
-      modules = [
-        { nixpkgs.hostPlatform = system; }
-        ./hosts/hmsrvr/configuration.nix
-        inputs.home-manager.nixosModules.default
-      ];
-    };
-
-    nixosConfigurations.nb-pavilion = nixpkgs.lib.nixosSystem {
-      specialArgs = inputs // {
-        inherit usr;
-        inherit usermap;
-      };
-      modules = [
-        { nixpkgs.hostPlatform = system; }
-        ./hosts/nb-pavilion/configuration.nix
-        inputs.home-manager.nixosModules.default
-        inputs.nix-flatpak.nixosModules.nix-flatpak
-      ];
-    };
-  };
 }
