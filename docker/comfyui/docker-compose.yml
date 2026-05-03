@@ -1,10 +1,9 @@
 services:
   comfyui:
-    image: yanwk/comfyui-boot:cu128-megapak
+    image: yanwk/comfyui-boot:cu130-megapak-pt211
     container_name: comfyui
     restart: unless-stopped
-    devices:
-      - nvidia.com/gpu=all
+    init: true
     ports:
       - "10011:8188"
     volumes:
@@ -14,6 +13,11 @@ services:
       - /home/chrisleebear/data/ai/models:/root/ComfyUI/models
       # User Configuration & Workflows
       - /home/chrisleebear/data/docker/comfyui/user:/root/ComfyUI/user
+      # Custom Nodes & Python packages (persisted across rebuilds)
+      - /home/chrisleebear/data/docker/comfyui/custom_nodes:/root/ComfyUI/custom_nodes
+      - /home/chrisleebear/data/docker/comfyui/dot-local:/root/.local
+      # User scripts (pre-start / post-start hooks)
+      - /home/chrisleebear/data/docker/comfyui/user-scripts:/root/user-scripts
       # CRITICAL CACHES
       # Prevents redownloading HF/Torch files on restart
       - /home/chrisleebear/data/docker/comfyui/cache/huggingface:/root/.cache/huggingface
@@ -23,5 +27,5 @@ services:
     environment:
       - TZ=Europe/Vienna
       - CLI_ARGS=
-      # FORCE the container to use its own libraries, preventing the NixOS leak
-      # - LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:/usr/lib:/usr/local/lib
+    devices:
+      - nvidia.com/gpu=all
