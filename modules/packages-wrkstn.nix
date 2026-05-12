@@ -35,6 +35,7 @@
     playerctl # Command-line tool for controlling media players
     bitwig-studio # Digital audio workstation (DAW)
     qpwgraph # Visual patchbay for PipeWire audio routing
+    sox # Audio processing tool (required for Claude Code /voice)
 
     # -- Emulation / Virtualization --
     quickemu
