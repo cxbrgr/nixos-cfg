@@ -48,6 +48,7 @@
     polkit # Toolkit for controlling system-wide privileges
     seahorse # GNOME keyring manager for encryption keys and passwords
     gnome-decoder # QR code decoder
+    keepassxc # Password manager
 
     # scrcpy wrapped to work properly on Hyprland (forces X11 + OpenGL)
     (pkgs.writeShellScriptBin "scrcpy" ''
