@@ -26,26 +26,17 @@ The agent container mounts `workspace/` and reads/writes it as Hermes lives.
    - LiveKit Cloud: https://livekit.io → new project → copy URL + API key + secret
    - Gemini: https://aistudio.google.com/apikey
 
-2. **Copy the compose dir to hmsrvr** (one-time, can also rsync from this repo):
+2. **On hmsrvr** (nixos-cfg is checked out at the same path, just `git pull`):
    ```bash
-   ssh hmsrvr "sudo mkdir -p /data/docker/hermes"
-   rsync -av --exclude node_modules --exclude .next \
-     /home/chrisleebear/nixos-cfg/docker/hermes/ \
-     hmsrvr:/data/docker/hermes/
+   cd ~/nixos-cfg/docker/hermes
+   cp .env.example .env
+   $EDITOR .env   # fill in the three LiveKit values + Gemini key
    ```
 
-3. **Create `.env` on hmsrvr** (don't commit it):
+3. **Bring up the stack**:
    ```bash
-   ssh hmsrvr
-   cd /data/docker/hermes
-   sudo cp .env.example .env
-   sudo nano .env   # fill in the three LiveKit values + Gemini key
-   ```
-
-4. **Bring up the stack on hmsrvr**:
-   ```bash
-   sudo docker compose up -d --build
-   sudo docker compose logs -f hermes-agent
+   docker compose up -d --build
+   docker compose logs -f hermes-agent
    ```
 
 5. **Open the PWA**: `http://hmsrvr.lan:3737` from desktop, or from phone on the same wifi. The browser will ask for mic permission. Tap the mic in the control bar, say hi.
@@ -58,8 +49,8 @@ The agent's identity, memory, and skills live entirely in `workspace/` on hmsrvr
 
 Code changes to `agent/` or `frontend/` require a rebuild:
 ```bash
-sudo docker compose up -d --build hermes-agent
-sudo docker compose up -d --build hermes-frontend
+docker compose up -d --build hermes-agent
+docker compose up -d --build hermes-frontend
 ```
 
 ## Troubleshooting

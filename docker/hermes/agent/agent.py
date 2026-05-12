@@ -15,11 +15,11 @@ from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.runner import PipelineRunner
 from pipecat.pipeline.task import PipelineParams, PipelineTask
-from pipecat.services.gemini_multimodal_live.gemini import (
-    GeminiMultimodalLiveLLMService,
+from pipecat.services.google.gemini_live.llm import (
+    GeminiLiveLLMService,
     InputParams,
 )
-from pipecat.transports.services.livekit import LiveKitParams, LiveKitTransport
+from pipecat.transports.livekit.transport import LiveKitParams, LiveKitTransport
 
 from tools import build_system_prompt, build_tools
 
@@ -39,7 +39,8 @@ LIVEKIT_ROOM = os.environ.get("LIVEKIT_ROOM", "hermes-main")
 GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
 GEMINI_VOICE = os.environ.get("GEMINI_VOICE", "Puck")
 GEMINI_MODEL = os.environ.get(
-    "GEMINI_MODEL", "models/gemini-2.0-flash-exp"
+    "GEMINI_MODEL",
+    "models/gemini-2.5-flash-native-audio-preview-12-2025",
 )
 TEMPERATURE = float(os.environ.get("GEMINI_TEMPERATURE", "0.7"))
 
@@ -86,7 +87,7 @@ async def main() -> None:
     system_prompt = build_system_prompt(WORKSPACE)
     logger.info("system prompt: {} chars", len(system_prompt))
 
-    llm = GeminiMultimodalLiveLLMService(
+    llm = GeminiLiveLLMService(
         api_key=GEMINI_API_KEY,
         voice_id=GEMINI_VOICE,
         model=GEMINI_MODEL,
