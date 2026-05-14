@@ -23,6 +23,7 @@
     bat               # Cat clone with syntax highlighting and git integration
     wget              # Download files from the web
     dig               # DNS lookup tool
+    openssl           # Cryptography toolkit (TLS, certs, hashing)
     
     # -- Process & System --
     htop              # Interactive process viewer
