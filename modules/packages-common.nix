@@ -27,7 +27,16 @@
     
     # -- Process & System --
     htop              # Interactive process viewer
-    btop              # Resource monitor with graphs (prettier htop)
+    # btop wrapped so it can dlopen libnvidia-ml.so / librocm_smi64.so from
+    # NixOS' driver path (/run/opengl-driver/lib); without this, GPU panel
+    # stays empty even though btop is built with BTOP_GPU=ON.
+    (btop.overrideAttrs (old: {
+      nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+      postInstall = (old.postInstall or "") + ''
+        wrapProgram $out/bin/btop \
+          --prefix LD_LIBRARY_PATH : /run/opengl-driver/lib
+      '';
+    }))
     ncdu              # Disk usage analyzer with ncurses interface
     fastfetch         # Fast system info tool (neofetch replacement)
     psmisc            # Utilities for process management (killall, fuser, pstree)
