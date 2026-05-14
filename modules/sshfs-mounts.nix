@@ -31,6 +31,8 @@
       "reconnect"                 # Auto-reconnect on connection loss
       "ServerAliveInterval=15"    # Send keepalive every 15s
       "ServerAliveCountMax=3"     # Disconnect after 3 missed keepalives
+      "uid=1000"                  # Makes remote files appear owned by chrisleebear locally
+      "gid=100"                   # Makes remote files appear owned by 'users' group locally
       "identityfile=/home/chrisleebear/.ssh/id_hmsrvr"
     ];
   };
