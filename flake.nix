@@ -28,6 +28,11 @@
       url = "github:k3d3/claude-desktop-linux-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    antigravity-nix = {
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -56,7 +61,7 @@
 
       nixosConfigurations.wrkstn = nixpkgs.lib.nixosSystem {
         specialArgs = inputs // {
-          inherit usr;
+          inherit inputs usr;
         };
         modules = [
           { nixpkgs.hostPlatform = system; }
@@ -68,7 +73,7 @@
 
       nixosConfigurations.hmsrvr = nixpkgs.lib.nixosSystem {
         specialArgs = inputs // {
-          inherit usr;
+          inherit inputs usr;
         };
         modules = [
           { nixpkgs.hostPlatform = system; }
@@ -79,7 +84,7 @@
 
       nixosConfigurations.nb-pavilion = nixpkgs.lib.nixosSystem {
         specialArgs = inputs // {
-          inherit usr;
+          inherit inputs usr;
           inherit usermap;
         };
         modules = [

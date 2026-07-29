@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }:
 {
@@ -21,7 +22,9 @@
     jetbrains.rider # Cross-platform .NET IDE
     remmina # Remote desktop client (RDP, VNC, SSH)
     rustdesk-flutter # Self-hosted remote desktop (RustDesk)
-    antigravity # Google AGI coding agent
+    inputs.antigravity-nix.packages.${pkgs.system}.google-antigravity # Standalone 2.0 app
+    inputs.antigravity-nix.packages.${pkgs.system}.google-antigravity-cli # CLI utility (agy)
+    inputs.antigravity-nix.packages.${pkgs.system}.google-antigravity-ide # Original IDE
     opencode # Open source AGI coding agent
     claude-code # Anthropic AGI coding agent
 

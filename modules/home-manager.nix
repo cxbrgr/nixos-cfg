@@ -1,7 +1,6 @@
 { 
   usr,
-  illogical-flake,
-  nix-flatpak,
+  inputs,
   ... 
 }:
 {
@@ -10,8 +9,8 @@
     useGlobalPkgs = true;
     backupFileExtension = "backup";
     # Pass usr and flake inputs to all home-manager modules
-    extraSpecialArgs = { 
-      inherit usr illogical-flake nix-flatpak; 
+    extraSpecialArgs = inputs // { 
+      inherit inputs usr; 
     };
   };
 }

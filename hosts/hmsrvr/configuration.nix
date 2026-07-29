@@ -3,6 +3,7 @@
   pkgs,
   lib,
   usr,
+  inputs,
   ...
 }:
 {
@@ -140,7 +141,7 @@
     useUserPackages = true;
     useGlobalPkgs = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = { inherit usr; };
+    extraSpecialArgs = inputs // { inherit inputs usr; };
     users.${usr.name} = import ./home.nix;
   };
 

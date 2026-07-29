@@ -27,6 +27,10 @@ build:
 update:
     nh os test . --update --diff always
 
+verify:
+    nix flake check
+    nh os build --dry .
+
 update-input INPUT:
     nix flake update {{INPUT}}
 
