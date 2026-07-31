@@ -132,15 +132,22 @@
     jack.enable = true;
   };
 
-  services.pipewire.wireplumber.extraConfig."51-disable-suspend"."monitor.alsa.rules" = [
+  services.udev.extraRules = ''
+    # Ignore GSP 670 USB charging cable audio card so PipeWire only uses the EPOS GSA 70 wireless dongle
+    SUBSYSTEM=="sound", ATTRS{idVendor}=="1395", ATTRS{idProduct}=="008a", ENV{PULSE_IGNORE}="1", ENV{PIPEWIRE_IGNORE}="1"
+  '';
+
+  services.pipewire.wireplumber.extraConfig."51-epos-gsa70"."monitor.alsa.rules" = [
     {
       matches = [
         {
-          "node.name" = "~alsa_output.*Sennheiser_EPOS_GSA_70.*";
+          "node.name" = "~alsa_.*Sennheiser_EPOS_GSA_70.*";
         }
       ];
       actions.update-props = {
-        "session.suspend-timeout-seconds" = 300;
+        "session.suspend-timeout-seconds" = 5;
+        "api.alsa.period-size" = 1024;
+        "api.alsa.headroom" = 1024;
         "dither.method" = "wannamaker3";
         "dither.noise" = 1;
       };
