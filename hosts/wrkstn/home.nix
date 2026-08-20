@@ -1,4 +1,5 @@
 {
+  lib,
   illogical-flake,
   nix-flatpak,
   usr,
@@ -36,4 +37,32 @@
   programs.illogical-impulse = {
     enable = true;
   };
+
+  xdg.configFile."hypr/custom/general.conf".text = lib.mkForce ''
+    # General overrides for wrkstn NVIDIA GPU
+    monitor = DP-4, 3440x1440@100, 0x0, 1
+    monitor = HDMI-A-2, 2560x1440@75, 3440x0, 1
+    monitor = DP-1, 3440x1440@100, 0x0, 1
+
+    input {
+        kb_layout = de
+        follow_mouse = 1
+        touchpad {
+            natural_scroll = no
+        }
+        sensitivity = 0
+    }
+
+    cursor {
+        no_hardware_cursors = true
+    }
+
+    render {
+        direct_scanout = false
+    }
+
+    general {
+        allow_tearing = false
+    }
+  '';
 }

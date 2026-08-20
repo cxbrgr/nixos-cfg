@@ -90,9 +90,18 @@
     open = false;
     nvidiaSettings = true;
     modesetting.enable = true;
-    powerManagement.enable = true;
+    powerManagement.enable = false;
     powerManagement.finegrained = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    NVD_BACKEND = "direct";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    AQ_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card2";
   };
 
   services.displayManager.gdm.enable = true;
