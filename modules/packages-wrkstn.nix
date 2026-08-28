@@ -27,6 +27,7 @@
     inputs.antigravity-nix.packages.${pkgs.system}.google-antigravity-ide # Original IDE
     opencode # Open source AGI coding agent
     claude-code # Anthropic AGI coding agent
+    inputs.claude-desktop.packages.${pkgs.system}.claude-desktop # Claude Desktop app (aaddrick/claude-desktop-debian)
 
     # -- Media / Office / Social --
     discord # Voice and text chat for communities
