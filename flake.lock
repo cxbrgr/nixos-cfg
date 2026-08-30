@@ -150,11 +150,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1787225858,
-        "narHash": "sha256-CxfL2TOXawXyyqH8dM7iYnBq7Q4jnmEXUWw3fJz7Jcs=",
+        "lastModified": 1788078072,
+        "narHash": "sha256-NTEm/IzS6jERv1zTUeotgmm1cXCxGAWKMQ9ZuvElylY=",
         "ref": "refs/heads/main",
-        "rev": "ea6a195fb845f44c8481cf942a1f6149acef91fb",
-        "revCount": 71,
+        "rev": "ac28cc281872a118847d0e7c65d720bb7ec85e92",
+        "revCount": 72,
         "submodules": true,
         "type": "git",
         "url": "file:sources/chr-ber-illogical-flake"
