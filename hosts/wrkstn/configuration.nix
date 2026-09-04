@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ../../modules/fonts.nix
     ../../modules/nix-gc.nix
+    ../../modules/nix-ld.nix
     ../../modules/docker.nix
     ../../modules/steam.nix
     ../../modules/spotifyd/system.nix

@@ -28,6 +28,7 @@
     opencode # Open source AGI coding agent
     claude-code # Anthropic AGI coding agent
     inputs.claude-desktop.packages.${pkgs.system}.claude-desktop # Claude Desktop app (aaddrick/claude-desktop-debian)
+    dotnet-sdk_10
 
     # -- Media / Office / Social --
     discord # Voice and text chat for communities

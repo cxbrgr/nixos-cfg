@@ -6,6 +6,11 @@
     enable = true;
 
     interactiveShellInit = ''
+      
+      if fest -d ~/.dotnet/tools
+        fish_add_path -a ~/.dotnet/tools
+      end
+      
       # go to nixos-cfg directory if it exists
       if test -d ~/nixos-cfg
         cd ~/nixos-cfg
