@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787105852,
-        "narHash": "sha256-trsSmQ//cHemNcHPpfQ+k8qFQGL5YE87dAQqyx/HNuc=",
+        "lastModified": 1788585477,
+        "narHash": "sha256-KOhojUB8bb/4rnPlb6/UGJNcg3w7AKjVoJJ6yoqtGVc=",
         "owner": "aaddrick",
         "repo": "claude-desktop-debian",
-        "rev": "55478e3b813d9b8d448936f867232af033c39999",
+        "rev": "30e0e730e5e2c2fb8760aad8a5cb1152aebff230",
         "type": "github"
       },
       "original": {
@@ -65,11 +65,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1785627969,
-        "narHash": "sha256-4dtXQk/NMePegK/nWp5NSeuZKLATItOq61lpEvmXqGw=",
+        "lastModified": 1787559586,
+        "narHash": "sha256-onL0VLf9vPllmT0H/OlURIU5r5t5WIEl7t4tVNKT0Nw=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "427bf4bd9435fdf21321c8cc628c24efc14c0f7a",
+        "rev": "9d0d87172c374f89da73c1cfe6d81ae62feac1f1",
         "type": "github"
       },
       "original": {
