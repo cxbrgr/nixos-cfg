@@ -1,7 +1,7 @@
-{ 
+{
   pkgs,
   lib,
-  ... 
+  ...
 }:
 {
     home.packages = with pkgs; [
@@ -10,5 +10,6 @@
       # ==========================================
       adguardhome          # Network-wide software for blocking ads and tracking
       nvtopPackages.intel  # GPU monitoring for btop and standalone nvtop
+      claude-code          # Anthropic AGI coding agent
     ];
 }
